@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(/ttf/Roboto.ttf);
+}
+:root{
+    --rgb-white: rgb(244,244,244);
+    --main-color: rgb(68, 68, 68) ;
+    --main-bg-color: rgb(236, 234, 233) ;
+    --rgb-orange: rgb(244, 178, 0) ;
+}
+body{
+    color: var(--main-color) ;
+    font-size: 20px ;
+    font-family: 'Roboto';
+    margin: 0 ;
+    padding: 0 ;
+}
+
+
+header{
+    width: 100% ; height: 60px ;
+    color: var(--rgb-white) ; font-weight: 600;
+    background-color: var(--rgb-orange) ;
+    display: flex ; align-items: center ; justify-content: space-evenly ;
+}
+
+
+.sections{
+    width: 100% ;
+    margin-top: 60px ;
+    display: flex ;
+    justify-content: center ;
+}
+.sections_app{
+    width: 60% ; height: 60px ;
+    background-color: rgb(234,234,234) ;
+    display: flex ;
+    align-items: center ;
+    justify-content:space-around;
+}
+
+.sections_app div{
+    height: 60px ;
+    cursor: pointer ;
+    display: flex ;
+    align-items: center ;
+}
+.sections_app div:hover{
+    background-color: var(--rgb-orange) ;
+}
+
+
+
+
+
+
+
+
+
+
+
+a{
+    color: inherit ;
+    text-decoration: none ;
+}
+a:hover{
+    cursor: pointer ;
+}
+
+::-webkit-scrollbar { /* ширина scrollbar */ width: 10px; }
+::-webkit-scrollbar-thumb { /* цвет плашки */ background-color: var(--rgb-orange ) ; }
