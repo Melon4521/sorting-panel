@@ -9,11 +9,9 @@
     --rgb-orange: rgb(244, 178, 0) ;
 }
 body{
-    color: var(--main-color) ;
-    font-size: 20px ;
-    font-family: 'Roboto';
-    margin: 0 ;
-    padding: 0 ;
+    margin: 0 ; padding: 0 ;
+    color: var(--main-color) ; font-size: 20px ; font-family: 'Roboto';
+    background-color: var(--rgb-white) ;
 }
 
 
@@ -24,35 +22,53 @@ header{
     display: flex ; align-items: center ; justify-content: space-evenly ;
 }
 
-
+/** Первая секция с выбором разделов */
 .sections{
     width: 100% ;
     margin-top: 60px ;
-    display: flex ;
-    justify-content: center ;
+    display: flex ; justify-content: center ;
 }
 .sections_app{
     width: 60% ; height: 60px ;
     background-color: rgb(234,234,234) ;
-    display: flex ;
-    align-items: center ;
-    justify-content:space-around;
+    display: flex ; align-items: center ; justify-content:space-around;
 }
-
 .sections_app div{
     height: 60px ;
+    display: flex ; justify-content: center ; align-items: center ;
+    transition: 0.33s ;
     cursor: pointer ;
-    display: flex ;
-    align-items: center ;
 }
 .sections_app div:hover{
+    color: var(--rgb-white) ;
     background-color: var(--rgb-orange) ;
 }
 
 
-
-
-
+/** Слайдер */
+.slader{
+    width: 100% ;
+    display: flex ; align-items: center ; justify-content: center ; flex-direction: column ;
+    margin-top: 30px ;
+}
+#slader_app{
+    width: 60% ; height: 260px ;
+    background-color: black ;
+}
+#button_slader{
+    pointer-events: none ;
+    display: flex ;
+}
+#button_for_slader{
+    width: 20px ; height: 20px ;
+    margin: 15px 5px ;
+    border-radius: 10px ; border: 1px solid var(--rgb-orange) ;
+    pointer-events: all ;
+    cursor: pointer ;
+}
+#button_for_slader:hover{
+    background-color: var(--rgb-orange) ;
+}
 
 
 
