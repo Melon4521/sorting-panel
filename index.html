@@ -1,30 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorting</title>
+
+    <link rel="stylesheet" href="./components/main.css">
+
 </head>
+
 <body>
-    
 
-    <div>
-        <div id="Group"> <!-- Есть возможность добавть ещё варианты сортировки-->
-            <div class="active" name="tires">Подбор по шинам</div>
+    <div class="container">
+        <div class="catalog">
+            <div class="catalog__sort" id="Left">
+                <div class="catalog__sort-menu sort-menu">
+                    <h3 class="sort-menu__title">Шины</h3>
+                    <button class="sort-menu__back" id="ButtonBack">Назад</button>
+                    <button class="sort-menu__find sort-menu__button" id="LeftPick">Подобрать</button>
+                    <button class="sort-menu__reset sort-menu__button" id="Reset">Сбросить</button>
+                    <div class="sort-menu__body">
+                        <div class="sort-menu__selects LeftBodyDiv">
+                            <div class="SelectBox">
+                                <select class="dropdown" name="1">
+                                    <option>Слон</option>
+                                    <option>Бегемот</option>
+                                    <option>Жираф</option>
+                                    <option>Слон</option>
+                                    <option>Слон</option>
+                                    <option>Бегемот</option>
+                                    <option>Жираф</option>
+                                </select>
+                            </div>
+                            <div class="SelectBox">
+                                <select class="dropdown" name="1">
+                                    <option>Слон</option>
+                                    <option>Бегемот</option>
+                                    <option>Жираф</option>
+                                </select>
+                            </div>
+                            <div class="SelectBox">
+                                <select class="dropdown" name="1">
+                                    <option>Слон</option>
+                                    <option>Бегемот</option>
+                                    <option>Жираф</option>
+                                </select>
+                            </div>
+                            <div class="SelectBox">
+                                <select class="dropdown" name="1">
+                                    <option>Слон</option>
+                                    <option>Бегемот</option>
+                                    <option>Жираф</option>
+                                </select>
+                            </div>
+                            <div class="SelectBox">
+                                <select class="dropdown" name="1">
+                                    <option>Слон</option>
+                                    <option>Бегемот</option>
+                                    <option>Жираф</option>
+                                </select>
+                            </div>
+                            <div class="SelectBox">
+                                <select class="dropdown" name="1">
+                                    <option>Слон</option>
+                                    <option>Бегемот</option>
+                                    <option>Жираф</option>
+                                </select>
+                            </div>
+                            <div class="SelectBox">
+                                <select class="dropdown" name="1">
+                                    <option>Слон</option>
+                                    <option>Бегемот</option>
+                                    <option>Жираф</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="sort-menu__price menu-price">
+                            <h3 class="menu-price__title">Розничная цена</h3>
+                            <div class="menu-price__header">
+                                <div class="menu-price__min menu-price__elem">
+                                    От <span id="MinPriceCard">123</span>
+                                </div>
+                                <div class="menu-price__max menu-price__elem">
+                                    До <span id="MaxPriceCard">123</span>
+                                </div>
+                            </div>
+                            <div class="menu-price__range">
+                                <input type="range" value="100" min="1" max="100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="catalog__cards" id="Right">
+
+                <div class="catalog__cards-card catalog-card" id="Card" data-name="Aosen HU901 275/40 R20 106W"
+                    data-prise="7396" data-season="Лето" data-brand="Aosen" data-stok="10">
+                    <div class="catalog-card__media-title"></div>
+                    <div class="catalog-card__body">
+                        <div class="catalog-card__image" id="CardImg">
+                            <img src="https://tyreopt.ru/trade/images/tyres/category/aosen/aosen-hu901.jpg">
+                        </div>
+                        <div class="catalog-cart__info cart-info">
+                            <div class="cart-info__title" id="CardName">Aosen HU901 275/40 R20 106W</div>
+                            <div class="cart-info__price" id="CardPrice">
+                                7396<span> руб./шт.</span>
+                            </div>
+                            <div class='catalog-cart__dop cart-dop CardDopInfo'>
+                                <div class="cart-dop__item">
+                                    <span>Сезон:</span>
+                                    Лето
+                                </div>
+                                <div class="cart-dop__item">
+                                    <span>В наличии:</span>
+                                    10
+                                    <span>шт.</span>
+                                </div>
+                                <div class="cart-dop__item">
+                                    <span>Производитель:</span>
+                                    Aosen
+                                </div>
+                            </div>
+                            <div class="cart-info__buttons CardButtonAll">
+                                <button class="cart-info__button" id="BuyIn1Click">Купить в 1 клик</button>
+                                <button class="cart-info__button" id="AddToCart">В корзину</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catalog-card__media-buttons"></div>
+                </div>
+
+
+
+            </div>
         </div>
-        <div id="SortByGroup">
-            
-        </div>
-    </div>
-
-    <div id=""> <!-- Место для генерации карт-->>
-
     </div>
 
     <!-- То что надо подключить -->
-    <link rel="stylesheet" href="components/main.css">
-    <script type="module" src="components/main.js"></script>
+    <link href="./components/SortingPanel/Select/style.css" rel="stylesheet" />
+    <link href="./components/SortingPanel/Select/style/flax.css" rel="stylesheet" />
+    <script src="./components/SortingPanel/Select/script/script.js"></script>
+    <script src="./components/SortingPanel/Select/script.js"></script>
+    <script>
+        easydropdown.all();
+    </script>
+    <link rel="stylesheet" href="components/SortingPanel/style.css">
+    <link rel="stylesheet" href="./components/Cards/style.css">
+    <script src="./components/Cards/script.js"></script>
 
 </body>
+
 </html>
