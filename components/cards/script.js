@@ -1,32 +1,32 @@
 //<Dynamic adaptive>==============================================================================
 
-let cartButtons = document.querySelectorAll('.cart-info__buttons'),
-    cartTitles = document.querySelectorAll('.cart-info__title');
+let cardButtons = document.querySelectorAll('.card-info__buttons'),
+    cardTitles = document.querySelectorAll('.card-info__title');
 
 doDynamicAvButtons()
 doDynamicAvTitles()
 
 function doDynamicAvButtons() {
     if (cheakMaxWidth(600)) {
-        cartButtons.forEach(cartButton => {
-            let cartInfo = cartButton.closest('.catalog-cart__info');
-            let cartInfoBody = cartInfo.closest('.catalog-card__body');
-            let cartButtonsNewParent = cartInfoBody.nextElementSibling;
-            cartButton.remove(cartInfo);
-            cartButtonsNewParent.append(cartButton);
+        cardButtons.forEach(cardButton => {
+            let cardInfo = cardButton.closest('.catalog-card__info');
+            let cardInfoBody = cardInfo.closest('.catalog-card__body');
+            let cardButtonsNewParent = cardInfoBody.nextElementSibling;
+            cardButton.remove(cardInfo);
+            cardButtonsNewParent.append(cardButton);
         });
     }
 }
 
 function doDynamicAvTitles() {
     if (cheakMaxWidth(600)) {
-        cartTitles.forEach(cartTitle => {
-            let cartInfo = cartTitle.closest('.catalog-cart__info');
-            let cartInfoBody = cartInfo.closest('.catalog-card__body');
-            let cartInfoBodyParent = cartInfoBody.parentElement;
-            let cartTitlesNewParent = cartInfoBodyParent.querySelector('.catalog-card__media-title');
-            cartTitle.remove(cartInfo);
-            cartTitlesNewParent.append(cartTitle);
+        cardTitles.forEach(cardTitle => {
+            let cardInfo = cardTitle.closest('.catalog-card__info');
+            let cardInfoBody = cardInfo.closest('.catalog-card__body');
+            let cardInfoBodyParent = cardInfoBody.parentElement;
+            let cardTitlesNewParent = cardInfoBodyParent.querySelector('.catalog-card__media-title');
+            cardTitle.remove(cardInfo);
+            cardTitlesNewParent.append(cardTitle);
         });
     }
 }
