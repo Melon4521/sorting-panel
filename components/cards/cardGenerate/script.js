@@ -5,7 +5,7 @@ export default function cardGenerate(myJson) {
 
     for (let i = 0; i < myJson.tires.length + 1; i++) {
         PlaceGeneration.innerHTML += /*html*/ `
-            <div class="catalog__cards-card catalog-card" id="Card" data-name="${myJson.tires[i].name}" data-price="${myJson.tires[i].prise}" data-season="${myJson.tires[i].season}" data-brand="${myJson.tires[i].brand}" data-stok="${myJson.tires[i].stock}">
+            <div class="catalog__cards-card catalog-card" id="Card" name="${myJson.tires[i].name}" price="${myJson.tires[i].price}" season="${myJson.tires[i].season}" brand="${myJson.tires[i].brand}" stok="${myJson.tires[i].stock}">
                 <div class="catalog-card__media-title"></div>
                 <div class="catalog-card__body">
                     <div class="catalog-card__image">

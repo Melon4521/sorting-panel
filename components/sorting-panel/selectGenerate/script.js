@@ -56,6 +56,7 @@ export default function selectGenerate(myJson) {
             } else if (myJson.tires[i].price < Number(minPrice.textContent)) {
                 minPrice.innerHTML = `${myJson.tires[i].price}`;
             } else {
+                maxPrice.attributes.value.value = `${myJson.tires[i].price}`;
                 maxPrice.innerHTML = `${myJson.tires[i].price}`;
             };
         };
