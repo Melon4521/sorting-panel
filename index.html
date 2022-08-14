@@ -25,51 +25,58 @@
                         <div id="selectGroup" class="sort-menu__selects LeftBodyDiv">
                             <div class="SelectBox" data-name="brand">
                                 <select class="dropdown">
-                                    <option>Слон</option>
-                                    <option>Бегемот</option>
-                                    <option>Жираф</option>
+                                    <option>Все</option>
+                                    <option>Advance</option>
+                                    <option>Думал что работает</option>
+                                    <option>А не , нефига</option>
                                 </select>
                             </div>
                             <div class="SelectBox" data-name="ship">
                                 <select class="dropdown">
-                                    <option>Слон</option>
-                                    <option>Бегемот</option>
-                                    <option>Жираф</option>
+                                    <option>Все</option>
+                                    <option>Нешип</option>
+                                    <option>Думал что работает</option>
+                                    <option>А не , нефига</option>
                                 </select>
                             </div>
                             <div class="SelectBox" data-name="date_up">
                                 <select class="dropdown">
-                                    <option>Слон</option>
-                                    <option>Бегемот</option>
-                                    <option>Жираф</option>
+                                    <option>Все</option>
+                                    <option>2022 - 06 - 29</option>
+                                    <option>Думал что работает</option>
+                                    <option>А не , нефига</option>
                                 </select>
                             </div>
-                            <div class="SelectBox" data-name="ship">
+                            <div class="SelectBox" data-name="season">
                                 <select class="dropdown">
-                                    <option>Слон</option>
-                                    <option>Бегемот</option>
-                                    <option>Жираф</option>
+                                    <option>Все</option>
+                                    <option>Всесезонные</option>
+                                    <option>Думал что работает</option>
+                                    <option>А не , нефига</option>
                                 </select>
                             </div>
                             <div class="SelectBox" data-name="w">
                                 <select class="dropdown">
-                                    <option>Слон</option>
-                                    <option>Бегемот</option>
-                                    <option>Жираф</option>
+                                    <option>Все</option>
+                                    <option>385</option>
+                                    <option>Думал что работает</option>
+                                    <option>А не , нефига</option>
                                 </select>
                             </div>
                             <div class="SelectBox" data-name="h">
                                 <select class="dropdown">
-                                    <option>Слон</option>
-                                    <option>Бегемот</option>
-                                    <option>Жираф</option>
+                                    <option>Все</option>
+                                    <option>65</option>
+                                    <option>Думал что работает</option>
+                                    <option>А не , нефига</option>
                                 </select>
                             </div>
                             <div class="SelectBox" data-name="r">
                                 <select class="dropdown">
-                                    <option>Слон</option>
-                                    <option>Бегемот</option>
-                                    <option>Жираф</option>
+                                    <option>Все</option>
+                                    <option>22,5</option>
+                                    <option>Думал что работает</option>
+                                    <option>А не , нефига</option>
                                 </select>
                             </div>
                         </div>
@@ -101,25 +108,21 @@
     <link rel="stylesheet" href="components/cards/style.css">
     <link rel="stylesheet" href="components/sorting-panel/style.css">
     <link rel="stylesheet" href="components/cards/style.css">
-    <link href="components/sorting-panel/selects/style.css" rel="stylesheet" />
-    <link href="components/sorting-panel/selects/style/flax.css" rel="stylesheet" />
+    <link rel="stylesheet" href="components/sorting-panel/selects/style.css" />
+    <link rel="stylesheet" href="components/sorting-panel/selects/style/flax.css" />
 
     <script type="module" src="components/main.js"></script>
     <script src="components/sorting-panel/selects/script.js"></script>
     <script src="components/sorting-panel/selects/script/script.js"></script>
-    <script src="components/cards/script.js"></script>
     <script>
         easydropdown.all();
-
-        // document.getElementById(".SelectBox").addEventListener("click", function () {
-        //     easydropdown.all();
-        // })
 
         document.getElementById("MenuPriceRange").addEventListener("input", function () {
             let inputRangeValue = document.getElementById('MaxPriceCard')
             inputRangeValue.innerHTML = `${this.value}`;
         });
     </script>
+    <script src="components/cards/script.js"></script>
 
 </body>
 
