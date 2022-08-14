@@ -22,55 +22,51 @@
                     <button class="sort-menu__find sort-menu__button" id="LeftPick">Подобрать</button>
                     <button class="sort-menu__reset sort-menu__button" id="Reset">Сбросить</button>
                     <div class="sort-menu__body">
-                        <div class="sort-menu__selects LeftBodyDiv">
-                            <div class="SelectBox">
-                                <select class="dropdown" name="1">
-                                    <option>Слон</option>
-                                    <option>Бегемот</option>
-                                    <option>Жираф</option>
-                                    <option>Слон</option>
+                        <div id="selectGroup" class="sort-menu__selects LeftBodyDiv">
+                            <div class="SelectBox" data-name="brand">
+                                <select class="dropdown">
                                     <option>Слон</option>
                                     <option>Бегемот</option>
                                     <option>Жираф</option>
                                 </select>
                             </div>
-                            <div class="SelectBox">
-                                <select class="dropdown" name="1">
+                            <div class="SelectBox" data-name="ship">
+                                <select class="dropdown">
                                     <option>Слон</option>
                                     <option>Бегемот</option>
                                     <option>Жираф</option>
                                 </select>
                             </div>
-                            <div class="SelectBox">
-                                <select class="dropdown" name="1">
+                            <div class="SelectBox" data-name="date_up">
+                                <select class="dropdown">
                                     <option>Слон</option>
                                     <option>Бегемот</option>
                                     <option>Жираф</option>
                                 </select>
                             </div>
-                            <div class="SelectBox">
-                                <select class="dropdown" name="1">
+                            <div class="SelectBox" data-name="ship">
+                                <select class="dropdown">
                                     <option>Слон</option>
                                     <option>Бегемот</option>
                                     <option>Жираф</option>
                                 </select>
                             </div>
-                            <div class="SelectBox">
-                                <select class="dropdown" name="1">
+                            <div class="SelectBox" data-name="w">
+                                <select class="dropdown">
                                     <option>Слон</option>
                                     <option>Бегемот</option>
                                     <option>Жираф</option>
                                 </select>
                             </div>
-                            <div class="SelectBox">
-                                <select class="dropdown" name="1">
+                            <div class="SelectBox" data-name="h">
+                                <select class="dropdown">
                                     <option>Слон</option>
                                     <option>Бегемот</option>
                                     <option>Жираф</option>
                                 </select>
                             </div>
-                            <div class="SelectBox">
-                                <select class="dropdown" name="1">
+                            <div class="SelectBox" data-name="r">
+                                <select class="dropdown">
                                     <option>Слон</option>
                                     <option>Бегемот</option>
                                     <option>Жираф</option>
@@ -82,100 +78,44 @@
                             <h3 class="menu-price__title">Розничная цена</h3>
                             <div class="menu-price__header">
                                 <div class="menu-price__min menu-price__elem">
-                                    От <span id="MinPriceCard">123</span>
+                                    От <span id="MinPriceCard" value="false">123</span>
                                 </div>
                                 <div class="menu-price__max menu-price__elem">
-                                    До <span id="MaxPriceCard">123</span>
+                                    До <span id="MaxPriceCard" value="false">123</span>
                                 </div>
                             </div>
                             <div class="menu-price__range">
-                                <input type="range" value="100" min="1" max="100">
+                                <input id="MenuPriceRange" type="range" multiple value="" min="" max="">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="catalog__cards" id="Right">
-
-                <div class="catalog__cards-card catalog-card" id="Card" data-name="Aosen HU901 275/40 R20 106W"
-                    data-prise="7396" data-season="Лето" data-brand="Aosen" data-stok="10">
-                    <div class="catalog-card__media-title"></div>
-                    <div class="catalog-card__body">
-                        <div class="catalog-card__image">
-                            <img src="https://tyreopt.ru/trade/images/tyres/category/aosen/aosen-hu901.jpg">
-                        </div>
-<<<<<<< HEAD
-                        <div class="catalog-cart__info cart-info">
-                            <div class="cart-info__title">Aosen HU901 275/40 R20 106W</div>
-                            <div class="cart-info__price">
-                                <span>7396</span> руб./шт.
-                            </div>
-                            <div class='catalog-cart__dop cart-dop CardDopInfo'>
-                                <div class="cart-dop__item">
-                                    Сезон:
-                                    <span>Лето</span>
-                                </div>
-                                <div class="cart-dop__item">
-                                    В наличии:
-                                    <span>10</span>
-                                    шт.
-                                </div>
-                                <div class="cart-dop__item">
-                                    Производитель:
-                                    <span>Aosen</span>
-=======
-                        <div class="catalog-card__info card-info">
-                            <div class="card-info__title" id="CardName">Aosen HU901 275/40 R20 106W</div>
-                            <div class="card-info__price" id="CardPrice">
-                                7396<span> руб./шт.</span>
-                            </div>
-                            <div class='catalog-card__dop card-dop CardDopInfo'>
-                                <div class="card-dop__item">
-                                    <span>Сезон:</span>
-                                    Лето
-                                </div>
-                                <div class="card-dop__item">
-                                    <span>В наличии:</span>
-                                    10
-                                    <span>шт.</span>
-                                </div>
-                                <div class="card-dop__item">
-                                    <span>Производитель:</span>
-                                    Aosen
->>>>>>> 355508c2e3b80ea8afc79a879750cdc4d84f0d4d
-                                </div>
-                            </div>
-                            <div class="card-info__buttons CardButtonAll">
-                                <button class="card-info__button" id="BuyIn1Click">Купить в 1 клик</button>
-                                <button class="card-info__button" id="AddToCart">В корзину</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-card__media-buttons"></div>
-                </div>
-
-
-
-            </div>
+            <div class="catalog__cards" id="Right"></div>
         </div>
     </div>
 
     <!-- То что надо подключить -->
+    <link rel="stylesheet" href="components/sorting-panel/style.css">
+    <link rel="stylesheet" href="components/cards/style.css">
+    <link rel="stylesheet" href="components/sorting-panel/style.css">
+    <link rel="stylesheet" href="components/cards/style.css">
     <link href="components/sorting-panel/selects/style.css" rel="stylesheet" />
     <link href="components/sorting-panel/selects/style/flax.css" rel="stylesheet" />
-    <script src="components/sorting-panel/selects/script/script.js"></script>
+
+    <script type="module" src="components/main.js"></script>
     <script src="components/sorting-panel/selects/script.js"></script>
+    <script src="components/sorting-panel/selects/script/script.js"></script>
     <script>
         easydropdown.all();
-    </script>
-    <link rel="stylesheet" href="components/sorting-panel/style.css">
-    <link rel="stylesheet" href="components/cards/style.css">
-    <script src="components/cards/script.js"></script>
-    <link rel="stylesheet" href="components/sorting-panel/style.css">
-    <link rel="stylesheet" href="components/cards/style.css">
-    <script src="components/cards/script.js"></script>
 
+        document.getElementById("MenuPriceRange").addEventListener("input", function () {
+            let inputRangeValue = document.getElementById('MaxPriceCard')
+            inputRangeValue.innerHTML = `${this.value}`;
+        });
+    </script>
+    <script src="components/cards/script.js"></script>
 
 </body>
 
