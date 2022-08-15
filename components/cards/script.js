@@ -41,6 +41,6 @@ var refreshId = setInterval(function () {
 
         clearInterval(refreshId);
     };
-}, 100);
+}, 500);
 
 //</Dynamic adaptive>==============================================================================
