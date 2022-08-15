@@ -73,7 +73,7 @@ let cardsDynamicAdaptive = () => {
     doDynamicAvTitles();
 };
 
-export function createAndSettingCards(myJson) {
+export default function createAndSettingCards(myJson) {
     cardGenerate(myJson)
 
     if (window.innerWidth <= 600) {

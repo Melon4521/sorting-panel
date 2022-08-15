@@ -2,11 +2,11 @@ import myJson from '../api/demoDataTires.json' assert {
     type: 'json'
 };
 
-import selectGenerate from './sorting-panel/select-generate/script.js';
-import {
-    createAndSettingCards
-} from "./cards/script.js";
+
+import selectGenerate from './sorting-panel/selects/select-generate/script.js';
+import createAndSettingCards from "./cards/script.js";
 import sortingEvents from './sorting-panel/sorting/script.js';
+
 
 document.getElementById('LeftPick').addEventListener('click', function () {
     sortingEvents();
