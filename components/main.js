@@ -2,13 +2,10 @@ import myJson from '../api/demoDataTires.json' assert {
     type: 'json'
 };
 
-import selectGenerate from './sorting-panel/selectGenerate/script.js';
-import cardGenerate from "./cards/cardGenerate/script.js";
-import sortingEvents from './sorting-panel/events/script.js';
 
-
-let cardButtons = document.querySelectorAll('.card-info__buttons'),
-    cardTitles = document.querySelectorAll('.card-info__title');
+import selectGenerate from './sorting-panel/selects/select-generate/script.js';
+import createAndSettingCards from "./cards/script.js";
+import sortingEvents from './sorting-panel/sorting/script.js';
 
 
 document.getElementById('LeftPick').addEventListener('click', function () {
@@ -18,4 +15,4 @@ document.getElementById('LeftPick').addEventListener('click', function () {
 document.getElementById('Reset').addEventListener('click', console.clear);
 
 selectGenerate(myJson);
-cardGenerate(myJson);
+createAndSettingCards(myJson);
