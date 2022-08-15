@@ -1,7 +1,54 @@
-//<Dynamic adaptive>==============================================================================
+let cardGenerate = (myJson) => {
+    let PlaceGeneration = document.getElementById('Right')
 
-function doDynamicAvButtons(cardButtons) {
-    if (cheakMaxWidth(600)) {
+    PlaceGeneration.innerHTML = '';
+
+    for (let i = 0; i < myJson.tires.length; i++) {
+        PlaceGeneration.innerHTML += /*html*/ `
+            <div class="catalog__cards-card catalog-card" id="Card" name="${myJson.tires[i].name}" price="${myJson.tires[i].price}" season="${myJson.tires[i].season}" brand="${myJson.tires[i].brand}" stok="${myJson.tires[i].stock}">
+                <div class="catalog-card__media-title"></div>
+                <div class="catalog-card__body">
+                    <div class="catalog-card__image">
+                        <img src="https://tyreopt.ru/trade/images/tyres/category/aosen/aosen-hu901.jpg">
+                    </div>
+                    <div class="catalog-card__info card-info">
+                        <div class="card-info__title"><a>${myJson.tires[i].name}</a></div>
+                        <div class="card-info__price">
+                            <span>${Number(myJson.tires[i].price)}</span> руб./шт.
+                        </div>
+                        <div class='catalog-card__dop card-dop CardDopInfo'>
+                            <div class="card-dop__item">
+                                Сезон:
+                                <span>${myJson.tires[i].season}</span>
+                            </div>
+                            <div class="card-dop__item">
+                                В наличии:
+                                <span>${Number(myJson.tires[i].stock)}</span>
+                                шт.
+                            </div>
+                            <div class="card-dop__item">
+                                Производитель:
+                                <span>${myJson.tires[i].brand}</span>
+                            </div>
+                        </div>
+                        <div class="card-info__buttons CardButtonAll">
+                            <button class="card-info__button" id="BuyIn1Click">Купить в 1 клик</button>
+                            <button class="card-info__button" id="AddTocard">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="catalog-card__media-buttons"></div>
+            </div>
+        `;
+    };
+};
+
+let cardsDynamicAdaptive = () => {
+
+    let cardButtons = document.querySelectorAll('.card-info__buttons'),
+        cardTitles = document.querySelectorAll('.card-info__title');
+
+    function doDynamicAvButtons() {
         cardButtons.forEach(cardButton => {
             let cardInfo = cardButton.closest('.catalog-card__info');
             let cardInfoBody = cardInfo.closest('.catalog-card__body');
@@ -9,11 +56,9 @@ function doDynamicAvButtons(cardButtons) {
             cardButton.remove(cardInfo);
             cardButtonsNewParent.append(cardButton);
         });
-    }
-}
+    };
 
-function doDynamicAvTitles(cardTitles) {
-    if (cheakMaxWidth(600)) {
+    function doDynamicAvTitles() {
         cardTitles.forEach(cardTitle => {
             let cardInfo = cardTitle.closest('.catalog-card__info');
             let cardInfoBody = cardInfo.closest('.catalog-card__body');
@@ -22,25 +67,16 @@ function doDynamicAvTitles(cardTitles) {
             cardTitle.remove(cardInfo);
             cardTitlesNewParent.append(cardTitle);
         });
-    }
-}
-
-function cheakMaxWidth(pixels) {
-    let mediaQuery = window.matchMedia(`(max-width: ${pixels}px)`);
-    return mediaQuery.matches
-}
-
-
-var refreshId = setInterval(function () {
-    let cardButtons = document.querySelectorAll('.card-info__buttons'),
-        cardTitles = document.querySelectorAll('.card-info__title');
-
-    if (cardButtons != false) {
-        doDynamicAvButtons(cardButtons)
-        doDynamicAvTitles(cardTitles)
-
-        clearInterval(refreshId);
     };
-}, 500);
 
-//</Dynamic adaptive>==============================================================================
+    doDynamicAvButtons();
+    doDynamicAvTitles();
+};
+
+export function createAndSettingCards(myJson) {
+    cardGenerate(myJson)
+
+    if (window.innerWidth <= 600) {
+        cardsDynamicAdaptive();
+    };
+};

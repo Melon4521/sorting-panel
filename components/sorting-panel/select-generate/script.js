@@ -4,7 +4,7 @@ export default function selectGenerate(myJson) {
         maxPrice = document.getElementById('MaxPriceCard'),
         MenuPriceRange = document.getElementById('MenuPriceRange')
 
-    // for (let i = 0; i < selectGroup.children.length + 1; i++) {
+    // for (let i = 0; i < selectGroup.children.length; i++) {
     //     let name = selectGroup.children[i].dataset.name;
 
     //     for (let z = 0; z < myJson.tires.length; z++) {
@@ -63,10 +63,8 @@ export default function selectGenerate(myJson) {
 
         // Параметры Value 
         if (
-            (MenuPriceRange.min == false) ||
-            (MenuPriceRange.max == false) ||
-            (Number(MenuPriceRange.min) > Number(myJson.tires[i].price)) ||
-            (Number(MenuPriceRange.max) < Number(myJson.tires[i].price))
+            (MenuPriceRange.min == false) || (MenuPriceRange.max == false) ||
+            (Number(MenuPriceRange.min) > Number(myJson.tires[i].price)) || (Number(MenuPriceRange.max) < Number(myJson.tires[i].price))
         ) {
             if (
                 (MenuPriceRange.min == false) ||
