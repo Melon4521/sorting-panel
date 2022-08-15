@@ -1,12 +1,6 @@
 //<Dynamic adaptive>==============================================================================
 
-let cardButtons = document.querySelectorAll('.card-info__buttons'),
-    cardTitles = document.querySelectorAll('.card-info__title');
-
-doDynamicAvButtons()
-doDynamicAvTitles()
-
-function doDynamicAvButtons() {
+function doDynamicAvButtons(cardButtons) {
     if (cheakMaxWidth(600)) {
         cardButtons.forEach(cardButton => {
             let cardInfo = cardButton.closest('.catalog-card__info');
@@ -18,7 +12,7 @@ function doDynamicAvButtons() {
     }
 }
 
-function doDynamicAvTitles() {
+function doDynamicAvTitles(cardTitles) {
     if (cheakMaxWidth(600)) {
         cardTitles.forEach(cardTitle => {
             let cardInfo = cardTitle.closest('.catalog-card__info');
@@ -35,5 +29,18 @@ function cheakMaxWidth(pixels) {
     let mediaQuery = window.matchMedia(`(max-width: ${pixels}px)`);
     return mediaQuery.matches
 }
+
+
+var refreshId = setInterval(function () {
+    let cardButtons = document.querySelectorAll('.card-info__buttons'),
+        cardTitles = document.querySelectorAll('.card-info__title');
+
+    if (cardButtons != false) {
+        doDynamicAvButtons(cardButtons)
+        doDynamicAvTitles(cardTitles)
+
+        clearInterval(refreshId);
+    };
+}, 100);
 
 //</Dynamic adaptive>==============================================================================
