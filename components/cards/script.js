@@ -44,49 +44,39 @@ let cardGenerate = (myJson) => {
 };
 
 let cardsDynamicAdaptive = () => {
+
     let cardButtons = document.querySelectorAll('.card-info__buttons'),
         cardTitles = document.querySelectorAll('.card-info__title');
 
-    doDynamicAvButtons(cardButtons);
-    doDynamicAvTitles(cardTitles);
-}
-
-let refreshId = setInterval(function () {
-    let cardButtons = document.querySelectorAll('.card-info__buttons'),
-        cardTitles = document.querySelectorAll('.card-info__title');
-
-    if (cardButtons != false) {
-        doDynamicAvButtons(cardButtons);
-        doDynamicAvTitles(cardTitles);
-        clearInterval(refreshId);
+    function doDynamicAvButtons() {
+        cardButtons.forEach(cardButton => {
+            let cardInfo = cardButton.closest('.catalog-card__info');
+            let cardInfoBody = cardInfo.closest('.catalog-card__body');
+            let cardButtonsNewParent = cardInfoBody.nextElementSibling;
+            cardButton.remove(cardInfo);
+            cardButtonsNewParent.append(cardButton);
+        });
     };
 
-}, 100);
+    function doDynamicAvTitles() {
+        cardTitles.forEach(cardTitle => {
+            let cardInfo = cardTitle.closest('.catalog-card__info');
+            let cardInfoBody = cardInfo.closest('.catalog-card__body');
+            let cardInfoBodyParent = cardInfoBody.parentElement;
+            let cardTitlesNewParent = cardInfoBodyParent.querySelector('.catalog-card__media-title');
+            cardTitle.remove(cardInfo);
+            cardTitlesNewParent.append(cardTitle);
+        });
+    };
 
-function doDynamicAvButtons(cardButtons) {
-    cardButtons.forEach(cardButton => {
-        let cardInfo = cardButton.closest('.catalog-card__info');
-        let cardInfoBody = cardInfo.closest('.catalog-card__body');
-        let cardButtonsNewParent = cardInfoBody.nextElementSibling;
-        cardButton.remove(cardInfo);
-        cardButtonsNewParent.append(cardButton);
-    });
+    doDynamicAvButtons();
+    doDynamicAvTitles();
 };
 
-function doDynamicAvTitles(cardTitles) {
-    cardTitles.forEach(cardTitle => {
-        let cardInfo = cardTitle.closest('.catalog-card__info');
-        let cardInfoBody = cardInfo.closest('.catalog-card__body');
-        let cardInfoBodyParent = cardInfoBody.parentElement;
-        let cardTitlesNewParent = cardInfoBodyParent.querySelector('.catalog-card__media-title');
-        cardTitle.remove(cardInfo);
-        cardTitlesNewParent.append(cardTitle);
-    });
-}
-
 export default function createAndSettingCards(myJson) {
-    cardGenerate(myJson);
+    cardGenerate(myJson)
+
     if (window.innerWidth <= 600) {
         cardsDynamicAdaptive();
-    }
+    };
 };
