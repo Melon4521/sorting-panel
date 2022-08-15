@@ -27,20 +27,19 @@ function doDynamicAvTitles(cardTitles) {
 
 function cheakMaxWidth(pixels) {
     let mediaQuery = window.matchMedia(`(max-width: ${pixels}px)`);
-    return mediaQuery.matches
+    return mediaQuery.matches;
 }
-
 
 var refreshId = setInterval(function () {
     let cardButtons = document.querySelectorAll('.card-info__buttons'),
         cardTitles = document.querySelectorAll('.card-info__title');
 
     if (cardButtons != false) {
-        doDynamicAvButtons(cardButtons)
-        doDynamicAvTitles(cardTitles)
-
+        doDynamicAvButtons(cardButtons);
+        doDynamicAvTitles(cardTitles);
         clearInterval(refreshId);
     };
+
 }, 100);
 
 //</Dynamic adaptive>==============================================================================
