@@ -94,12 +94,12 @@
     font-size: 18px;
     font-weight: 700;
     margin-right: 25px;
-    transition: all .3s ease-in;
+    transition: all .3s ease-in-out;
 }
 
 .card-info__button:hover {
     background-color: var(--rgb-orange);
-    transition: all .3s ease-in;
+    transition: all .3s ease-in-out;
 }
 
 @media (max-width: 600px) {
