@@ -4,11 +4,11 @@ export default function selectGenerate(myJson) {
         maxPrice = document.getElementById('MaxPriceCard'),
         MenuPriceRange = document.getElementById('MenuPriceRange')
 
-
     for (let i = 0; i < selectGroup.children.length; i++) { //Пробежка по всем селектам
         let name = selectGroup.children[i].dataset.name;
 
-        for (let y = 0; y < selectGroup.children[i].children[0].children.length; y++) { // Пробежка по каждому оптиону в селекте
+        for (let y = 0; y < selectGroup.children[i].children[0].children.length; y++) {
+            // Пробежка по каждому оптиону в селекте
             let sovp = 0;
             console.log(selectGroup.children[i].children[0].children);
             for (let x = 0; x < myJson.tires.length; x++) { // Пробежка по JSon товаров
