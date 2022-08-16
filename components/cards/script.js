@@ -5,7 +5,7 @@ let cardGenerate = (myJson) => {
 
     for (let i = 0; i < myJson.tires.length; i++) {
 
-        var image;
+        let image;
 
         if (myJson.tires[i].image500x500 == "") {
             image = "images/no-image.png";
