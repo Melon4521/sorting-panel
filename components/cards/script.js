@@ -9,7 +9,7 @@ let cardGenerate = (myJson) => {
                 <div class="catalog-card__media-title"></div>
                 <div class="catalog-card__body">
                     <div class="catalog-card__image">
-                        <img src="https://tyreopt.ru/trade/images/tyres/category/aosen/aosen-hu901.jpg">
+                        <img src="${myJson.tires[i].image500x500}">
                     </div>
                     <div class="catalog-card__info card-info">
                         <div class="card-info__title"><a>${myJson.tires[i].name}</a></div>
@@ -44,7 +44,6 @@ let cardGenerate = (myJson) => {
 };
 
 let cardsDynamicAdaptive = () => {
-
     let cardButtons = document.querySelectorAll('.card-info__buttons'),
         cardTitles = document.querySelectorAll('.card-info__title');
 
