@@ -4,12 +4,21 @@ let cardGenerate = (myJson) => {
     PlaceGeneration.innerHTML = '';
 
     for (let i = 0; i < myJson.tires.length; i++) {
+
+        let img;
+
+        if (myJson.tires[i].image500x500) {
+            img = myJson.tires[i].image500x500;
+        } else {
+            img = myJson.tires[i - 1].image500x500
+        };
+
         PlaceGeneration.innerHTML += /*html*/ `
             <div class="catalog__cards-card catalog-card" id="Card" name="${myJson.tires[i].name}" price="${myJson.tires[i].price}" season="${myJson.tires[i].season}" brand="${myJson.tires[i].brand}" stok="${myJson.tires[i].stock}">
                 <div class="catalog-card__media-title"></div>
                 <div class="catalog-card__body">
                     <div class="catalog-card__image">
-                        <img src="${myJson.tires[i].image500x500}">
+                        <img src="${img}">
                     </div>
                     <div class="catalog-card__info card-info">
                         <div class="card-info__title"><a>${myJson.tires[i].name}</a></div>
