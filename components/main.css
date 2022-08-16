@@ -2,6 +2,12 @@
 
 /* <Обнуление>============================================================================== */
 
+:root {
+    --rgb-orange: #EF7B00;
+    --rgb-white: #fff ;
+    --rgb-black:#000;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -167,8 +173,8 @@ body._lock {
 }
 
 .popup__content {
-    background-color: #fff;
-    color: #000;
+    background-color: var(--rgb-white);
+    color: var(--rgb-black);
     max-width: 600px;
     max-height: 80vh;
     min-height: 100px;
@@ -189,7 +195,7 @@ body._lock {
     top: 25px;
     right: 20px;
     font-size: 23px;
-    color: #000;
+    color: var(--rgb-black);
     font-weight: 600;
     text-decoration: none;
     -webkit-transition: color 0.3s ease;
@@ -215,14 +221,14 @@ body._lock {
 
 .popup__text {
     font-size: 18px;
-    color: #000;
+    color: var(--rgb-black);
     -webkit-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
 }
 
 @media (any-hover: hover) {
     .popup__text:hover {
-        color: #EF7B00;
+        color: var(---rgb-orange);
         -webkit-transition: all 0.3s ease-in;
         transition: all 0.3s ease-in;
     }
@@ -242,7 +248,7 @@ body._lock {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #fff;
+    background-color: var(--rgb-white);
 }
 
 .header._header-fixed {
@@ -267,7 +273,7 @@ body._lock {
 }
 
 .top-header {
-    background-color: #fff;
+    background-color: var(--rgb-white);
 }
 
 .top-header__logo {
@@ -297,7 +303,7 @@ body._lock {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #000000;
+    color: var(--rgb-black)000;
     line-height: 1.2;
 }
 
@@ -307,7 +313,7 @@ body._lock {
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    color: #EF7B00;
+    color: var(---rgb-orange);
 }
 
 @media (max-width: 479.98px) {
@@ -333,7 +339,7 @@ body._lock {
 
 .top-menu__tel {
     font-size: 20px;
-    color: #000000;
+    color: var(--rgb-black)000;
     font-weight: 700;
 }
 
@@ -346,7 +352,7 @@ body._lock {
 .top-menu__tel::before {
     -webkit-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
-    color: #EF7B00;
+    color: var(---rgb-orange);
     padding-right: 10px;
 }
 
@@ -416,7 +422,7 @@ body._lock {
     padding-left: 2px;
     min-width: 25px;
     min-height: 25px;
-    background-color: #fff;
+    background-color: var(--rgb-white);
     border-radius: 50%;
     -webkit-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
@@ -506,14 +512,32 @@ body._lock {
     height: 100%;
     font-size: 18px;
     font-weight: 600;
-    color: #000000;
+    color: var(--rgb-black)000;
     -webkit-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
 }
 
+
+::-webkit-scrollbar {
+    margin: 0;
+    padding: 0;
+    width: 10px;
+    height: 100%;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #EF7B00;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
 @media (any-hover: hover) {
     .menu-nav__elem:hover .menu-nav__link {
-        color: #fff;
+        color: var(--rgb-white);
         -webkit-transition: all 0.3s ease-in;
         transition: all 0.3s ease-in;
     }
@@ -524,7 +548,7 @@ body._lock {
 }
 
 .menu-nav__elem._active-link .menu-nav__link {
-    color: #fff;
+    color: var(--rgb-white);
 }
 
 @media (any-hover: hover) {
@@ -532,7 +556,7 @@ body._lock {
         -webkit-transition: all 0.3s ease-in;
         transition: all 0.3s ease-in;
         background-color: #EF7B00;
-        color: #fff;
+        color: var(--rgb-white);
     }
 }
 
@@ -543,7 +567,7 @@ body._lock {
         right: -100%;
         width: 100%;
         height: 100%;
-        background-color: #fff;
+        background-color: var(--rgb-white);
         padding: 100px 0 40px 0;
         -webkit-transition: right 0.5s ease;
         transition: right 0.5s ease;
@@ -587,7 +611,7 @@ body._lock {
         display: inline-block;
         width: 100%;
         height: 3px;
-        background-color: #000000;
+        background-color: var(--rgb-black)000;
     }
 
     .top-menu__burger::before,
@@ -599,7 +623,7 @@ body._lock {
         height: 3px;
         position: absolute;
         left: 0;
-        background-color: #000000;
+        background-color: var(--rgb-black)000;
     }
 
     .top-menu__burger::before {
@@ -725,7 +749,7 @@ body._lock {
 }
 
 .footer-social__item {
-    color: #fff;
+    color: var(--rgb-white);
     -webkit-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
     font-size: 30px;
@@ -792,7 +816,7 @@ body._lock {
 }
 
 .footer-col__link {
-    color: #fff;
+    color: var(--rgb-white);
     line-height: 1.2;
     -webkit-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
