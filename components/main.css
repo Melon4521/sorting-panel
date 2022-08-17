@@ -518,22 +518,25 @@ body._lock {
 }
 
 
+/* <Styling scrollbar>============================================================================== */
+
 ::-webkit-scrollbar {
     margin: 0;
     padding: 0;
-    width: 10px;
+    width: 12px;
     height: 100%;
+    background-color: #f0f0f0;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #EF7B00;
+    background-color: #a4a4a4;
 }
 
 ::-webkit-scrollbar-thumb:active {
-    background-color: transparent;
     cursor: pointer;
 }
 
+/* </Styling scrollbar>============================================================================== */
 
 @media (any-hover: hover) {
     .menu-nav__elem:hover .menu-nav__link {

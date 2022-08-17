@@ -13,7 +13,6 @@
 
 .catalog__sort {
     width: 27%;
-    height: auto;
 }
 
 @media (max-width: 768px) {

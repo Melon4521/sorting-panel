@@ -100,9 +100,11 @@
     transition: all .3s ease-in-out;
 }
 
-.card-info__button:hover {
-    background-color: var(--rgb-orange);
-    transition: all .3s ease-in-out;
+@media (any-hover: hover) {
+    .card-info__button:hover {
+        background-color: var(--rgb-orange);
+        transition: all .3s ease-in-out;
+    }
 }
 
 @media (max-width: 600px) {
