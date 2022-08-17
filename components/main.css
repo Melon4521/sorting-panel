@@ -518,18 +518,18 @@ body._lock {
 }
 
 
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
     margin: 0;
     padding: 0;
     width: 10px;
     height: 100%;
 }
 
-::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
     background-color: #EF7B00;
 }
 
-::-webkit-scrollbar-thumb:active {
+body::-webkit-scrollbar-thumb:active {
     background-color: transparent;
     cursor: pointer;
 }

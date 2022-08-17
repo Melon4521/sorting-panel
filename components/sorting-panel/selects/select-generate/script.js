@@ -5,26 +5,29 @@ export default function selectGenerate(myJson) {
         MenuPriceRange = document.getElementById('MenuPriceRange')
 
     for (let i = 0; i < selectGroup.children.length; i++) { //Пробежка по всем селектам
+
         let name = selectGroup.children[i].dataset.name;
+        let arr = [];
 
-        for (let y = 0; y < selectGroup.children[i].children[0].children.length; y++) {
-            // Пробежка по каждому оптиону в селекте
-            let sovp = 0;
-            // console.log(selectGroup.children[i].children[0].children);
-            for (let x = 0; x < myJson.tires.length; x++) { // Пробежка по JSon товаров
-                // console.log(myJson.tires[x][name]);
+        for (let y = 0; y < myJson.tires.length; y++) { // Генерация из json файла по имени
+            if (String(myJson.tires[y][name]).replace(/(^[^])|[ ]+/g, '$1') == 'undefined') {
+                console.log('error', [y], name);
+            } else {
+                arr.push(String(myJson.tires[y][name]).replace(/(^[^])|[ ]+/g, '$1'));
+            }
 
-                if (selectGroup.children[i].children[0].children[y].textContent == myJson.tires[x][name]) {
-                    sovp++
-                }
-
-                // console.log(selectGroup.children[i].children[0].children.length);
-            };
-            // console.log(selectGroup.children[i].children[0].children[y].textContent , sovp)
         };
-        // if (sovp ==0){
-        //     console.log(selectGroup.children[i].children[0].children)
-        // }
+
+        arr.sort((a, b) => a - b); // Сортировка по возрастанию
+        arr = Array.from(new Set(arr)) // Удаление лишнего (повторов)
+
+        for (let z = 0; z < arr.length; z++) { // Генерация удаление пробелов
+            selectGroup.children[i].children[0].innerHTML += `<option value='${arr[z]}'>${arr[z]}</option>`;
+        };
+
+
+        // console.log(arr); // Наш массив
+        // console.log('length', arr.length); // Длина массива
         // console.log('===================================================================================================================================================================');
     };
 

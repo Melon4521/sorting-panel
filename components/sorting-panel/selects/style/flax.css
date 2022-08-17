@@ -133,7 +133,6 @@
 }
 
 .edd-body {
-    max-height: 300px;
     opacity: 0;
     position: absolute;
     left: 0;
