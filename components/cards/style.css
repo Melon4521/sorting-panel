@@ -136,7 +136,7 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 420px) {
     .card-info__buttons {
         flex-wrap: wrap;
     }
@@ -161,10 +161,8 @@
     .catalog-card__image {
         margin-bottom: 15px;
     }
-}
 
-@media (max-width: 385px) {
     .catalog-card__image img {
-        max-height: 170px;
+        max-height: 240px;
     }
 }
