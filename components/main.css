@@ -4,7 +4,7 @@
 
 :root {
     --rgb-orange: #EF7B00;
-    --rgb-white: #fff ;
+    --rgb-white: #fff;
     --rgb-black:#000;
 }
 
@@ -303,7 +303,7 @@ body._lock {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--rgb-black)000;
+    color: var(--rgb-black);
     line-height: 1.2;
 }
 
@@ -313,7 +313,7 @@ body._lock {
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    color: var(---rgb-orange);
+    color: var(--rgb-orange);
 }
 
 @media (max-width: 479.98px) {
