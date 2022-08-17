@@ -10,7 +10,7 @@ export default function selectGenerate(myJson) {
         for (let y = 0; y < selectGroup.children[i].children[0].children.length; y++) {
             // Пробежка по каждому оптиону в селекте
             let sovp = 0;
-            console.log(selectGroup.children[i].children[0].children);
+            // console.log(selectGroup.children[i].children[0].children);
             for (let x = 0; x < myJson.tires.length; x++) { // Пробежка по JSon товаров
                 // console.log(myJson.tires[x][name]);
 
@@ -25,7 +25,7 @@ export default function selectGenerate(myJson) {
         // if (sovp ==0){
         //     console.log(selectGroup.children[i].children[0].children)
         // }
-        console.log('===================================================================================================================================================================');
+        // console.log('===================================================================================================================================================================');
     };
 
     for (let i = 0; i < myJson.tires.length; i++) {

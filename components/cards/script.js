@@ -41,8 +41,8 @@ let cardGenerate = (myJson) => {
                             </div>
                         </div>
                         <div class="card-info__buttons CardButtonAll">
-                            <button class="card-info__button" id="BuyIn1Click">Купить в 1 клик</button>
-                            <button class="card-info__button" id="AddTocard">В корзину</button>
+                            <button class="card-info__button buyIn1Click">Купить в 1 клик</button>
+                            <button class="card-info__button addToCart">В корзину</button>
                         </div>
                     </div>
                 </div>

@@ -150,8 +150,9 @@
     }
 
     .catalog-card__body {
+        padding-left: 5px;
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
     }
 
     .catalog-card__info {
