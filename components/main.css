@@ -532,10 +532,6 @@ body._lock {
     background-color: #a4a4a4;
 }
 
-::-webkit-scrollbar-thumb:active {
-    cursor: pointer;
-}
-
 /* </Styling scrollbar>============================================================================== */
 
 @media (any-hover: hover) {

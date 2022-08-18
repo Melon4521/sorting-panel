@@ -1,5 +1,5 @@
 let cardGenerate = (myJson) => {
-    let PlaceGeneration = document.getElementById('Right')
+    let PlaceGeneration = document.getElementById('Right');
 
     PlaceGeneration.innerHTML = '';
 
