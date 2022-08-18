@@ -11,7 +11,7 @@ export default function selectGenerate(myJson) {
 
         for (let y = 0; y < myJson.tires.length; y++) { // Генерация из json файла по имени
             if (String(myJson.tires[y][name]).replace(/(^[^])|[ ]+/g, '$1') == 'undefined') {
-                console.log('error', [y], name);
+                console.log('error:', 'str:', y , ', type:', name);
             } else {
                 arr.push(String(myJson.tires[y][name]).replace(/(^[^])|[ ]+/g, '$1'));
             }
@@ -24,11 +24,6 @@ export default function selectGenerate(myJson) {
         for (let z = 0; z < arr.length; z++) { // Генерация удаление пробелов
             selectGroup.children[i].children[0].innerHTML += `<option value='${arr[z]}'>${arr[z]}</option>`;
         };
-
-
-        // console.log(arr); // Наш массив
-        // console.log('length', arr.length); // Длина массива
-        // console.log('===================================================================================================================================================================');
     };
 
     for (let i = 0; i < myJson.tires.length; i++) {
