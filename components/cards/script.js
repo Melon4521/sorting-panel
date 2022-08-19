@@ -14,7 +14,7 @@ let cardGenerate = (myJson) => {
         };
 
         PlaceGeneration.innerHTML += /*html*/ `
-            <div class="catalog__cards-card catalog-card" id="Card" name="${myJson.tires[i].name}" price="${myJson.tires[i].price}" stok="${myJson.tires[i].stock}" data-brand='${myJson.tires[i].brand}' data-ship='${myJson.tires[i].ship}' data-date_up='${myJson.tires[i].date_up}' data-season='${myJson.tires[i].season}' data-w='${myJson.tires[i].w}' data-h='${myJson.tires[i].h}' data-r='${myJson.tires[i].r}' data-id='${myJson.tires[i].code}'>
+            <div class="catalog__cards-card catalog-card" id="Card" name="${myJson.tires[i].name}" price="${myJson.tires[i].price}" stok="${myJson.tires[i].stock}" data-brand='${myJson.tires[i].brand}' data-ship='${myJson.tires[i].ship}' data-date_up='${myJson.tires[i].date_up}' data-season='${myJson.tires[i].season}' data-w='${myJson.tires[i].w}' data-h='${myJson.tires[i].h}' data-r='${myJson.tires[i].r}'>
                 <div class="catalog-card__media-title"></div>
                 <div class="catalog-card__body">
                     <div class="catalog-card__image">
@@ -47,7 +47,8 @@ let cardGenerate = (myJson) => {
                                 data-stock="${myJson.tires[i].stock}"
                                 data-date_up="${myJson.tires[i].date_up}" 
                                 data-season="${myJson.tires[i].season}"
-                                data-image="${myJson.tires[i].image500x500}">
+                                data-image="${myJson.tires[i].image500x500}"
+                                data-card_id="${myJson.tires[i].code}">
                                 Купить в 1 клик
                             </button>
                             <button class="card-info__button addToCart" 
@@ -56,7 +57,8 @@ let cardGenerate = (myJson) => {
                                 data-stock="${myJson.tires[i].stock}"
                                 data-date_up="${myJson.tires[i].date_up}" 
                                 data-season="${myJson.tires[i].season}"
-                                data-image="${myJson.tires[i].image500x500}">
+                                data-image="${myJson.tires[i].image500x500}"
+                                data-card_id="${myJson.tires[i].code}">
                                 В корзину
                             </button>
                         </div>
