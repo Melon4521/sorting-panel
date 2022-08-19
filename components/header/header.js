@@ -2,7 +2,7 @@
 
 let popupOpeners = document.querySelectorAll('.popup-opener[data-popup_open]');
 const body = document.querySelector('body');
-const lockElements = document.querySelector('.lock-padding');
+const lockElements = document.querySelectorAll('.lock-padding');
 
 let unlock = true;
 
@@ -46,13 +46,19 @@ function closePopup(popup, doUnlock) {
 };
 
 function lockBody() {
-    let widthWithoutScroll = window.innerWidth - document.documentElement.clientWidth;
+    let scrollWidth = window.innerWidth - document.documentElement.clientWidth;
     body.classList.add('_lock');
-    body.style.paddingRight = widthWithoutScroll + 'px';
+    body.style.paddingRight = scrollWidth + 'px';
     if (lockElements) {
         for (let i = 0; i < lockElements.length; i++) {
             const elem = lockElements[i];
-            elem.style.paddingRight = widthWithoutScroll + 'px';
+            if (elem.classList.contains('header')) {
+                if (elem.classList.contains('_header-fixed')) {
+                    elem.style.paddingRight = scrollWidth + 'px';
+                }
+            } else {
+                elem.style.paddingRight = scrollWidth + 'px';
+            };
         };
     };
 

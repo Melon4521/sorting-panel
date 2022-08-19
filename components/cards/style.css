@@ -45,9 +45,13 @@
     margin-bottom: 0;
 }
 
+.catalog-card__image {
+    align-self: center;
+}
+
 .catalog-card__image img {
     max-height: 200px;
-    width: auto;
+    max-width: 150px;
 }
 
 .catalog-card__info {

@@ -17,7 +17,7 @@
 
         <!-- HEADER -->
 
-        <header class="header _add-padding">
+        <header class="header lock-padding">
             <div class="header__container top-header">
                 <a href="#" title="Главная">
                     <div class="top-header__logo header-logo">
@@ -202,52 +202,11 @@
 
                     <div class="popup__cart popup-cart">
                         <div class="popup-cart__body">
-                            <div class="popup-cart__cards cart-cards">
-
-                                <div class="cart-cards__item cart-card">
-                                    <div class="cart-card__body">
-                                        <div class="cart-card__image">
-                                            <img src="https://tyreopt.ru/trade/images/tyres/category/advance/advance-gl282a-rulevaya.jpg"
-                                                alt="Изображение">
-                                        </div>
-                                        <div class="cart-card__info">
-                                            <div class="cart-card__info-header info-header">
-                                                <div class="info-header__title"><a href="#">Advance GL282A (рулевая)
-                                                        315/70 R22.5 156L</a></div>
-                                                <div class="info-header__price">13 600руб/шт.</div>
-                                                <div class="info-header__details"><a href="#">Подробнее</a></div>
-                                            </div>
-                                            <div class="cart-card__info-footer info-footer">
-                                                <div class="info-footer__cart-left"><span>В корзине: </span>2</div>
-                                                <div class="info-footer__func-btn">Добавить</div>
-                                                <div class="info-footer__func-btn">Убрать</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="popup-cart__cards cart-cards" id="shoppingCart">
+                                <!-- Cards will generate here -->
+                                <div class="cart-cards__empty">
+                                    <p class="cart-cards__empty-text">Корзина пуста...</p>
                                 </div>
-
-                                <div class="cart-cards__item cart-card">
-                                    <div class="cart-card__body">
-                                        <div class="cart-card__image">
-                                            <img src="https://tyreopt.ru/trade/images/tyres/category/advance/advance-gl282a-rulevaya.jpg"
-                                                alt="Изображение">
-                                        </div>
-                                        <div class="cart-card__info">
-                                            <div class="cart-card__info-header info-header">
-                                                <div class="info-header__title"><a href="#">Advance GL282A (рулевая)
-                                                        315/70 R22.5 156L</a></div>
-                                                <div class="info-header__price">13 600 руб\шт.</div>
-                                                <div class="info-header__details"><a href="#">Подробнее</a></div>
-                                            </div>
-                                            <div class="cart-card__info-footer info-footer">
-                                                <div class="info-footer__cart-left"><span>В корзине: </span>2</div>
-                                                <div class="info-footer__func-btn">Добавить</div>
-                                                <div class="info-footer__func-btn">Убрать</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                             <div class="popup-cart__footer cart-footer">
                                 <div class="cart-footer__total">
@@ -300,6 +259,7 @@
     <script type="module" src="components/main.js"></script>
     <script src="components/sorting-panel/selects/script.js"></script>
     <script src="components/header/header.js"></script>
+    <script src="components/shopping-cart/script.js"></script>
 
 </body>
 

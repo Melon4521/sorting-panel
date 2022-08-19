@@ -14,7 +14,7 @@ let cardGenerate = (myJson) => {
         };
 
         PlaceGeneration.innerHTML += /*html*/ `
-            <div class="catalog__cards-card catalog-card" id="Card" name="${myJson.tires[i].name}" price="${myJson.tires[i].price}" stok="${myJson.tires[i].stock}" data-brand='${myJson.tires[i].brand}' data-ship='${myJson.tires[i].ship}' data-date_up='${myJson.tires[i].date_up}' data-season='${myJson.tires[i].season}' data-w='${myJson.tires[i].w}' data-h='${myJson.tires[i].h}' data-r='${myJson.tires[i].r}' >
+            <div class="catalog__cards-card catalog-card" id="Card" name="${myJson.tires[i].name}" price="${myJson.tires[i].price}" stok="${myJson.tires[i].stock}" data-brand='${myJson.tires[i].brand}' data-ship='${myJson.tires[i].ship}' data-date_up='${myJson.tires[i].date_up}' data-season='${myJson.tires[i].season}' data-w='${myJson.tires[i].w}' data-h='${myJson.tires[i].h}' data-r='${myJson.tires[i].r}' data-id='${myJson.tires[i].code}'>
                 <div class="catalog-card__media-title"></div>
                 <div class="catalog-card__body">
                     <div class="catalog-card__image">
@@ -41,14 +41,34 @@ let cardGenerate = (myJson) => {
                             </div>
                         </div>
                         <div class="card-info__buttons CardButtonAll">
-                            <button class="card-info__button buyIn1Click">Купить в 1 клик</button>
-                            <button class="card-info__button addToCart">В корзину</button>
+                            <button class="card-info__button buyIn1Click" 
+                                data-name="${myJson.tires[i].name}" 
+                                data-price="${myJson.tires[i].price}" 
+                                data-stock="${myJson.tires[i].stock}"
+                                data-date_up="${myJson.tires[i].date_up}" 
+                                data-season="${myJson.tires[i].season}"
+                                data-image="${myJson.tires[i].image500x500}">
+                                Купить в 1 клик
+                            </button>
+                            <button class="card-info__button addToCart" 
+                                data-name="${myJson.tires[i].name}" 
+                                data-price="${myJson.tires[i].price}" 
+                                data-stock="${myJson.tires[i].stock}"
+                                data-date_up="${myJson.tires[i].date_up}" 
+                                data-season="${myJson.tires[i].season}"
+                                data-image="${myJson.tires[i].image500x500}">
+                                В корзину
+                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="catalog-card__media-buttons"></div>
             </div>
         `;
+
+        /* 19.08: Добавил дата-атрибуты на кнопки,
+        чтобы удобно было их отлавливать 
+        (Добавление в корзину) */
     };
 };
 
