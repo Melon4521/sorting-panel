@@ -145,8 +145,9 @@ export default function cartMainFunction() {
             }
 
             document.getElementById("totalCartSum").innerHTML = `${totalCartSum} руб.`;
-            return totalCartSum;
         }
+        
+        return totalCartSum;
     };
 
     function clearAllItems() {
@@ -158,6 +159,13 @@ export default function cartMainFunction() {
                     <p class="cart-cards__empty-text">Корзина пуста...</p>
                 </div>`;
         };
+
+        let totalCartSum = openCart();
+
+        if (totalCartSum === 0) {
+            document.getElementById("totalCartSum").innerHTML = `0 руб.`;
+        }
+
         changeCartIconNumber();
     };
 
