@@ -1,8 +1,10 @@
 export default function cartMainFunction() {
-    let addToCartButtons = document.querySelectorAll('.addToCart');
+    let addToCartButtons = document.querySelectorAll('.addToCart'),
+        cartData = getCartData();
     const shoppingCart = document.querySelector('#shoppingCart'),
         cartIcon = document.querySelector('.top-menu__cart'),
-        clearAllButton = document.querySelector('#cartClearAll');
+        clearAllButton = document.querySelector('#cartClearAll'),
+        cartMakeOffer = document.querySelector('#cartMakeOffer');
 
     addToCartButtons.forEach(addToCartButton => {
         addToCartButton.addEventListener('click', (event) => {
@@ -12,6 +14,84 @@ export default function cartMainFunction() {
 
     cartIcon.addEventListener('click', openCart);
     clearAllButton.addEventListener('click', clearAllItems);
+
+    // Запрет на открытие "Оформления заказа", если корзина пуста
+    if (cartData !== null) {
+        if (cartMakeOffer.classList.contains('_none-cart-data')) {
+            cartMakeOffer.classList.remove('_none-cart-data');
+        }
+        cartMakeOffer.classList.add('_has-cart-data');
+    } else {
+        if (cartMakeOffer.classList.contains('_has-cart-data')) {
+            cartMakeOffer.classList.remove('_has-cart-data');
+        }
+        cartMakeOffer.classList.add('_none-cart-data');
+    }
+
+    let sendBtn = document.getElementById("cartSendOffer"),
+        offerInputName = document.getElementById("offerInputName"),
+        offerInputPhone = document.getElementById("offerInputPhone"),
+        offerInputMail = document.getElementById("offerInputMail"),
+        offerInputs = [offerInputName, offerInputPhone, offerInputMail];
+
+    function CustomValidation() {}
+
+    CustomValidation.prototype = {
+        // Установим пустой массив сообщений об ошибках
+        invalidities: [],
+
+        // Метод, проверяющий валидность
+        checkValidity: function (input) {
+
+            let validity = input.validity;
+
+            if (validity.patternMismatch) {
+                this.addInvalidity('Неправильный формат ввода!');
+            }
+
+            if (validity.rangeUnderflow) {
+                var min = getAttributeValue(input, 'min');
+                this.addInvalidity('Минимальная длина поля должна соответствовать' + min + ' символов');
+            }
+        },
+
+        // Добавляем сообщение об ошибке в массив ошибок
+        addInvalidity: function (message) {
+            this.invalidities.push(message);
+        },
+
+        // Получаем общий текст сообщений об ошибках
+        getInvalidities: function () {
+            return this.invalidities.join('. \n');
+        }
+    };
+
+    // Добавляем обработчик клика на кнопку отправки формы
+    sendBtn.addEventListener('click', function (e) {
+        // Пройдёмся по всем полям
+        for (let i = 0; i < offerInputs.length; i++) {
+            let offerInput = offerInputs[i];
+
+            // Проверим валидность поля, используя встроенную в JavaScript функцию checkValidity()
+            if (offerInput.checkValidity() == false) {
+                let inputCustomValidation = new CustomValidation(); // Создадим объект CustomValidation
+                inputCustomValidation.checkValidity(offerInput); // Выявим ошибки
+                let customValidityMessage = inputCustomValidation.getInvalidities(); // Получим все сообщения об ошибках
+                offerInput.setCustomValidity(customValidityMessage); // Установим специальное сообщение об ошибке
+            } else {
+                sendOrder()
+            }
+        };
+        alert('1');
+    });
+
+
+    function sendOrder() {
+        alert("Заказ отправлен, мы скоро с вами свяжемся!");
+        ClearAllElems()
+    };
+
+    changeCartIconNumber();
 
     //<Functions>==============================================================================
 
@@ -45,6 +125,18 @@ export default function cartMainFunction() {
                 1,
             ];
         };
+
+        if (cartData !== null) {
+            if (cartMakeOffer.classList.contains('_none-cart-data')) {
+                cartMakeOffer.classList.remove('_none-cart-data');
+            }
+            cartMakeOffer.classList.add('_has-cart-data');
+        } else {
+            if (cartMakeOffer.classList.contains('_has-cart-data')) {
+                cartMakeOffer.classList.remove('_has-cart-data');
+            }
+            cartMakeOffer.classList.add('_none-cart-data');
+        }
 
         setCartData(cartData);
         changeCartIconNumber();
@@ -146,7 +238,7 @@ export default function cartMainFunction() {
 
             document.getElementById("totalCartSum").innerHTML = `${totalCartSum} руб.`;
         }
-        
+
         return totalCartSum;
     };
 
@@ -158,12 +250,28 @@ export default function cartMainFunction() {
                 `<div class="cart-cards__empty">
                     <p class="cart-cards__empty-text">Корзина пуста...</p>
                 </div>`;
+            // Закрытие окна
+            setTimeout(() => {
+                closePopup(document.querySelector('#popup-cart'), true)
+            }, 1000)
         };
 
         let totalCartSum = openCart();
 
         if (totalCartSum === 0) {
             document.getElementById("totalCartSum").innerHTML = `0 руб.`;
+        }
+
+        if (cartData !== null) {
+            if (cartMakeOffer.classList.contains('_none-cart-data')) {
+                cartMakeOffer.classList.remove('_none-cart-data');
+            }
+            cartMakeOffer.classList.add('_has-cart-data');
+        } else {
+            if (cartMakeOffer.classList.contains('_has-cart-data')) {
+                cartMakeOffer.classList.remove('_has-cart-data');
+            }
+            cartMakeOffer.classList.add('_none-cart-data');
         }
 
         changeCartIconNumber();
@@ -178,7 +286,7 @@ export default function cartMainFunction() {
 
             if (cartData[item][6] == targetElementId) {
                 cartData[item][7]++;
-                break
+                break;
             }
         }
 
@@ -202,7 +310,7 @@ export default function cartMainFunction() {
                     cartData[item][7]--;
                 }
 
-                break
+                break;
             }
         }
 
@@ -216,10 +324,22 @@ export default function cartMainFunction() {
             shoppingCart.innerHTML = '';
             shoppingCart.innerHTML = /*html*/
                 `<div class="cart-cards__empty">
-                    <p class="cart-cards__empty-text">Корзина пуста...</p>
-                </div>`;
+                <p class="cart-cards__empty-text">Корзина пуста...</p>
+            </div>`;
+
+            if (cartMakeOffer.classList.contains('_has-cart-data')) {
+                cartMakeOffer.classList.remove('_has-cart-data');
+            }
+
+            cartMakeOffer.classList.add('_none-cart-data');
+
             alert("Корзина очищена");
-        };
+
+            // Закрытие окна
+            setTimeout(() => {
+                closePopup(document.querySelector('#popup-cart'), true)
+            }, 1000);
+        }
     };
 
     function changeCartIconNumber() {
@@ -237,9 +357,7 @@ export default function cartMainFunction() {
         } else {
             cartIcon.dataset.count = `${count}`;
         }
-    }
-
-    changeCartIconNumber()
+    };
 
     //</Functions>==============================================================================
 };

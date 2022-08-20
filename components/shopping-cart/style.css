@@ -173,7 +173,7 @@
 
 @media (max-width: 600px) {
     .popup__content {
-        padding: 25px;
+        padding: 20px;
     }
 
     .cart-card__info-footer {
@@ -243,14 +243,75 @@
         margin-top: 0px;
     }
 
-    .popup__content {
-        padding: 20px 15px;
-    }
-
     .popup__title {
         font-size: 30px;
         margin-bottom: 20px;
     }
-
-
 }
+
+/* <Form>============================================================================== */
+
+.cart-offer__inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.cart-offer__input {
+    width: 100%;
+    background-color: #f6f6f6;
+    border-radius: 12px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 15px;
+    transition: background-color .2s ease-in;
+}
+
+.cart-offer__input:last-child {
+    margin-bottom: 0px;
+}
+
+.cart-offer__input:focus {
+    transition: background-color .2s ease-in;
+    background-color: #e2e2e2;
+}
+
+.cart-offer__input:hover {
+    transition: background-color .2s ease-in;
+    background-color: #e2e2e2;
+}
+
+
+.cart-offer__button-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-offer__button {
+    padding: 10px 20px;
+    border-radius: 12px;
+    background-color: var(--rgb-blue);
+    color: var(--rgb-white);
+    font-size: 18px;
+    font-weight: 700;
+    transition: background-color .3s ease-in-out;
+}
+
+.cart-offer__button:focus {
+    transition: background-color .2s ease-in;
+    background-color: var(--rgb-orange);
+}
+
+@media (any-hover: hover) {
+    .cart-offer__button:hover {
+        background-color: var(--rgb-orange);
+        transition: background-color .3s ease-in-out;
+    }
+}
+
+/* </Form>============================================================================== */

@@ -12,30 +12,54 @@ if (popupOpeners.length > 0) {
         popupOpener.addEventListener('click', (e) => {
             const dataAtribute = popupOpener.dataset.popup_open;
             let popup = document.querySelector(dataAtribute);
-            popupOpen(popup)
-            e.preventDefault()
+            popupOpen(popup, e);
+            e.preventDefault();
         });
     };
 };
 
-function popupOpen(popup) {
+function popupOpen(popup, e) {
     if (popup && unlock) {
-        openedPopup = document.querySelector('.popup._open');
-        if (openedPopup) {
-            closePopup(openedPopup, false)
+        if (e.target.classList.contains('cartMakeOffer')) {
+            if (e.target.classList.contains('_has-cart-data')) {
+                console.log('has');
+                openedPopup = document.querySelector('.popup._open');
+                if (openedPopup) {
+                    closePopup(openedPopup, false)
+                } else {
+                    lockBody()
+                };
+                popup.classList.add('_open');
+                popup.addEventListener('click', (e) => {
+                    if (!e.target.closest('.popup__content') || e.target.classList.contains('popup__close')) {
+                        if (!e.target.classList.contains('info-footer__func-btn')) {
+                            closePopup(popup, true);
+                            e.preventDefault();
+                        }
+                    };
+                });
+            } else if (e.target.classList.contains('_none-cart-data')) {
+                alert('Корзина пуста, невозможно оформить заказ.');
+            }
+            
         } else {
-            lockBody()
-        };
-        popup.classList.add('_open');
-        popup.addEventListener('click', (e) => {
-
-            if (!e.target.closest('.popup__content') || e.target.classList.contains('popup__close')) {
-                if (!e.target.classList.contains('info-footer__func-btn')) {
-                    closePopup(popup, true);
-                    e.preventDefault();
-                }
+            openedPopup = document.querySelector('.popup._open');
+            if (openedPopup) {
+                closePopup(openedPopup, false)
+            } else {
+                lockBody()
             };
-        });
+            popup.classList.add('_open');
+            popup.addEventListener('click', (e) => {
+
+                if (!e.target.closest('.popup__content') || e.target.classList.contains('popup__close')) {
+                    if (!e.target.classList.contains('info-footer__func-btn')) {
+                        closePopup(popup, true);
+                        e.preventDefault();
+                    }
+                };
+            });
+        }
     };
 };
 
