@@ -47,7 +47,7 @@ export default function cartMainFunction() {
         };
 
         setCartData(cartData);
-        changeCartIconNumber()
+        changeCartIconNumber();
     };
 
     function generateCartCard(cardAtrs) {
