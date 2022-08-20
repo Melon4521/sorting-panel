@@ -28,9 +28,12 @@ function popupOpen(popup) {
         };
         popup.classList.add('_open');
         popup.addEventListener('click', (e) => {
+
             if (!e.target.closest('.popup__content') || e.target.classList.contains('popup__close')) {
-                closePopup(popup, true)
-                e.preventDefault()
+                if (!e.target.classList.contains('info-footer__func-btn')) {
+                    closePopup(popup, true);
+                    e.preventDefault();
+                }
             };
         });
     };

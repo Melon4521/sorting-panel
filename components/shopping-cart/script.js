@@ -1,7 +1,8 @@
 export default function cartMainFunction() {
-    let addToCartButtons = document.querySelectorAll('.addToCart'),
-        cartIcon = document.querySelector('.top-menu__cart');
-    const shoppingCart = document.querySelector('#shoppingCart');
+    let addToCartButtons = document.querySelectorAll('.addToCart');
+    const shoppingCart = document.querySelector('#shoppingCart'),
+        cartIcon = document.querySelector('.top-menu__cart'),
+        clearAllButton = document.querySelector('#cartClearAll');
 
     addToCartButtons.forEach(addToCartButton => {
         addToCartButton.addEventListener('click', (event) => {
@@ -10,6 +11,7 @@ export default function cartMainFunction() {
     });
 
     cartIcon.addEventListener('click', cartOpen);
+    clearAllButton.addEventListener('click', clearAllItems);
 
     //<Functions>==============================================================================
 
@@ -51,7 +53,6 @@ export default function cartMainFunction() {
 
     function generateCartCard(cardAtrs) {
         let PlaceGeneration = shoppingCart,
-            cartData = getCartData(),
             image;
 
         if (cardAtrs.cardImage) {
@@ -60,12 +61,7 @@ export default function cartMainFunction() {
             image = "images/no-image.png";
         };
 
-        if (cartData !== null) {
-            PlaceGeneration.innerHTML = '';
-        };
-
-        if (cardAtrs.total == 1) {
-            PlaceGeneration.innerHTML += /*html*/
+        PlaceGeneration.innerHTML += /*html*/
             `<div class="cart-cards__item cart-card" data-id="${cardAtrs.cardId}">
                 <div class="cart-card__body">
                     <div class="cart-card__image">
@@ -82,21 +78,30 @@ export default function cartMainFunction() {
                             <div class="info-header__details"><span>В наличии: </span>${cardAtrs.stock}</div>
                         </div>
                         <div class="cart-card__info-footer info-footer">
-                            <div class="info-footer__cart-left"><span>В корзине: </span>1</div>
+                            <div class="info-footer__cart-left"><span>В корзине: </span>${cardAtrs.total}</div>
                             <div class="info-footer__func-btns">
-                                <div class="info-footer__func-btn">Добавить</div>
-                                <div class="info-footer__func-btn">Убрать</div>
+                                <button class="info-footer__func-btn addCartItem" data-id="${cardAtrs.cardId}">Добавить</button>
+                                <button class="info-footer__func-btn delCartItem" data-id="${cardAtrs.cardId}">Убрать</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>`;
-        } else {
-            let currentCards = PlaceGeneration.querySelectorAll('.cart-card');
-            currentCards.forEach(currentCard => {
-                currentCard.querySelector('.info-footer__cart-left').innerHTML = `<span>В корзине: </span>${cardAtrs.total}`
+
+        let addItemButtons = PlaceGeneration.querySelectorAll('.addCartItem');
+        let delItemButtons = PlaceGeneration.querySelectorAll('.delCartItem');
+
+        addItemButtons.forEach(addItemButton => {
+            addItemButton.addEventListener('click', (e) => {
+                addItem(e);
             });
-        };
+        });
+
+        delItemButtons.forEach(delItemButton => {
+            delItemButton.addEventListener('click', (e) => {
+                deleteItem(e);
+            });
+        });
     };
 
     function setCartData(cartData) {
@@ -109,24 +114,101 @@ export default function cartMainFunction() {
 
     function cartOpen() {
         let cartData = getCartData(),
+            PlaceGeneration = shoppingCart,
             totalCartSum = 0, // Сумма всех товаров в корзине
             cartInfo = ''; // Текст заказа для письма
 
         if (cartData !== null) {
-            for (let item in cartData) {
+            PlaceGeneration.innerHTML = '';
+
+            // Пробегаемся по всем ключам в LocalStorage
+            for (let items in cartData) {
+
+                // Забираем значения в объект
                 let cartDataAtrs = {
-                    cardName: cartData[item][0],
-                    price: cartData[item][1],
-                    season: cartData[item][2],
-                    dateUp: cartData[item][3],
-                    stock: cartData[item][4],
-                    cardImage: cartData[item][5],
-                    cardId: cartData[item][6],
-                    total: cartData[item][7],
+                    cardName: cartData[items][0],
+                    price: cartData[items][1],
+                    season: cartData[items][2],
+                    dateUp: cartData[items][3],
+                    stock: cartData[items][4],
+                    cardImage: cartData[items][5],
+                    cardId: cartData[items][6],
+                    total: cartData[items][7],
                 };
+
+                for (let i = 0; i < cartData[items].length; i++) {
+                    cartInfo += `${cartData[items][i]}\t`;
+                };
+
+                cartInfo += "\n\n";
+                totalCartSum += Number(String((cartData[items][1])) * cartData[items][7]);
                 generateCartCard(cartDataAtrs);
             }
+
+            document.getElementById("totalCartSum").innerHTML = `${totalCartSum} руб.`;
+            return totalCartSum;
         }
+    };
+
+    function clearAllItems() {
+        if (confirm("Вы точно хотите очистить всё?")) {
+            localStorage.removeItem("shopping-cart");
+            shoppingCart.innerHTML = '';
+            shoppingCart.innerHTML = /*html*/
+                `<div class="cart-cards__empty">
+                    <p class="cart-cards__empty-text">Корзина пуста...</p>
+                </div>`;
+        };
+    };
+
+    function addItem(event) {
+        let targetElement = event.target,
+            targetElementId = targetElement.dataset.id,
+            cartData = getCartData();
+
+        for (let item in cartData) {
+
+            if (cartData[item][6] == targetElementId) {
+                cartData[item][7]++;
+                break
+            }
+        }
+
+        setCartData(cartData);
+        cartOpen();
+    };
+
+    function deleteItem(event) {
+        let targetElement = event.target,
+            targetElementId = targetElement.dataset.id,
+            cartData = getCartData();
+
+        for (let item in cartData) {
+
+            if (cartData[item][6] == targetElementId) {
+
+                if (cartData[item][7] == 1) {
+                    delete cartData[item];
+                } else {
+                    cartData[item][7]--;
+                }
+
+                break
+            }
+        }
+
+        setCartData(cartData);
+        cartOpen();
+
+        if (cartOpen() === 0) {
+            localStorage.removeItem("shopping-cart");
+            shoppingCart.innerHTML = '';
+            shoppingCart.innerHTML = /*html*/
+                `<div class="cart-cards__empty">
+                    <p class="cart-cards__empty-text">Корзина пуста...</p>
+                </div>`;
+            alert("Корзина очищена");
+        };
     };
 
     //</Functions>==============================================================================

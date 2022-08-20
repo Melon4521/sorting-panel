@@ -38,15 +38,12 @@
 
 .cart-card__body {
     display: flex;
+    align-items: center;
 }
 
 .cart-card__image img {
     max-height: 200px;
-    max-width: 150px;
-}
-
-@media (max-width: 768px) {
-    
+    max-width: 120px;
 }
 
 .cart-card__info {
@@ -107,9 +104,15 @@
 
 .info-footer__func-btn {
     color: var(--rgb-orange);
+    background-color: transparent;
     font-weight: 400;
     font-size: 18px;
     transition: all .3s ease-in;
+    margin-right: 10px;
+}
+
+.info-footer__func-btn:last-child {
+    margin-right: 0px;
 }
 
 @media (any-hover: hover) {
