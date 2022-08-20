@@ -10,7 +10,7 @@ export default function cartMainFunction() {
         });
     });
 
-    cartIcon.addEventListener('click', cartOpen);
+    cartIcon.addEventListener('click', openCart);
     clearAllButton.addEventListener('click', clearAllItems);
 
     //<Functions>==============================================================================
@@ -47,8 +47,7 @@ export default function cartMainFunction() {
         };
 
         setCartData(cartData);
-
-        // generateCartCard(cardDataAtributes);
+        changeCartIconNumber()
     };
 
     function generateCartCard(cardAtrs) {
@@ -112,7 +111,7 @@ export default function cartMainFunction() {
         return JSON.parse(localStorage.getItem("shopping-cart"));
     };
 
-    function cartOpen() {
+    function openCart() {
         let cartData = getCartData(),
             PlaceGeneration = shoppingCart,
             totalCartSum = 0, // Сумма всех товаров в корзине
@@ -159,6 +158,7 @@ export default function cartMainFunction() {
                     <p class="cart-cards__empty-text">Корзина пуста...</p>
                 </div>`;
         };
+        changeCartIconNumber();
     };
 
     function addItem(event) {
@@ -175,7 +175,8 @@ export default function cartMainFunction() {
         }
 
         setCartData(cartData);
-        cartOpen();
+        changeCartIconNumber();
+        openCart();
     };
 
     function deleteItem(event) {
@@ -198,10 +199,12 @@ export default function cartMainFunction() {
         }
 
         setCartData(cartData);
-        cartOpen();
+        changeCartIconNumber();
+        openCart();
 
-        if (cartOpen() === 0) {
+        if (openCart() === 0) {
             localStorage.removeItem("shopping-cart");
+            changeCartIconNumber();
             shoppingCart.innerHTML = '';
             shoppingCart.innerHTML = /*html*/
                 `<div class="cart-cards__empty">
@@ -210,6 +213,25 @@ export default function cartMainFunction() {
             alert("Корзина очищена");
         };
     };
+
+    function changeCartIconNumber() {
+        let cartData = getCartData();
+        let count = 0;
+
+        if (cartData !== null) {
+            for (let item in cartData) {
+                count++;
+            }
+        }
+
+        if (cartData === null) {
+            cartIcon.dataset.count = '0';
+        } else {
+            cartIcon.dataset.count = `${count}`;
+        }
+    }
+
+    changeCartIconNumber()
 
     //</Functions>==============================================================================
 };
