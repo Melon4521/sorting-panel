@@ -1,4 +1,4 @@
-import myJson from '../api/demoDataTiresFull.json' assert {
+import myJson from '../api/demoDataTires.json' assert {
     type: 'json'
 };
 
