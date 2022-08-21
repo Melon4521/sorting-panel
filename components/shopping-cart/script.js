@@ -188,6 +188,7 @@ export default function cartMainFunction() {
             }
 
             document.getElementById("totalCartSum").innerHTML = `${totalCartSum} руб.`;
+            document.getElementById("hiddenCartItem").value = cartInfo + `Общая стоимость товаров: ${totalSum}руб.`;
         }
 
         return totalCartSum;

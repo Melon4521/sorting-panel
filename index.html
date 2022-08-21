@@ -253,11 +253,12 @@
                     <a href="#" class="popup__close">X</a>
                     <div class="popup__title">Оформление</div>
                     <div class="popup__cart-offer cart-offer">
-                        <form class="cart-offer__form" id="offerForm" action="" method="post">
+                        <form class="cart-offer__form" id="offerForm" action="http://localhost/dashboard/test-cards/components/shopping-cart/message-sender.php" method="POST">
                             <div class="cart-offer__inputs" id="offerInputs">
-                                <input class="cart-offer__input" id="offerInputName" placeholder="Имя..." type="text" required>
-                                <input class="cart-offer__input" id="offerInputPhone" placeholder="Телефон..." minlength="11" type="tel" required>
-                                <input class="cart-offer__input" id="offerInputMail" placeholder="Email..." type="email" required>
+                                <input type="hidden" name="cart" id="hiddenCartItem" value="">
+                                <input class="cart-offer__input" name="name" id="offerInputName" placeholder="Имя..." type="text" required>
+                                <input class="cart-offer__input" name="phone" id="offerInputPhone" placeholder="Телефон..." minlength="11" type="tel" required>
+                                <input class="cart-offer__input" name="mail" id="offerInputMail" placeholder="Email..." type="email" required>
                             </div>
                             <div class="cart-offer__button-inner">
                                 <button class="cart-offer__button" id="cartSendOffer" type="submit">Отправить</button>
