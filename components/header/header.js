@@ -22,13 +22,14 @@ function popupOpen(popup, e) {
     if (popup && unlock) {
         if (e.target.classList.contains('cartMakeOffer')) {
             if (e.target.classList.contains('_has-cart-data')) {
-                console.log('has');
                 openedPopup = document.querySelector('.popup._open');
+
                 if (openedPopup) {
                     closePopup(openedPopup, false)
                 } else {
                     lockBody()
                 };
+
                 popup.classList.add('_open');
                 popup.addEventListener('click', (e) => {
                     if (!e.target.closest('.popup__content') || e.target.classList.contains('popup__close')) {
@@ -41,17 +42,17 @@ function popupOpen(popup, e) {
             } else if (e.target.classList.contains('_none-cart-data')) {
                 alert('Корзина пуста, невозможно оформить заказ.');
             }
-            
         } else {
             openedPopup = document.querySelector('.popup._open');
+
             if (openedPopup) {
                 closePopup(openedPopup, false)
             } else {
                 lockBody()
             };
+
             popup.classList.add('_open');
             popup.addEventListener('click', (e) => {
-
                 if (!e.target.closest('.popup__content') || e.target.classList.contains('popup__close')) {
                     if (!e.target.classList.contains('info-footer__func-btn')) {
                         closePopup(popup, true);

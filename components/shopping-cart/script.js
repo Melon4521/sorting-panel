@@ -28,67 +28,18 @@ export default function cartMainFunction() {
         cartMakeOffer.classList.add('_none-cart-data');
     }
 
-    let sendBtn = document.getElementById("cartSendOffer"),
-        offerInputName = document.getElementById("offerInputName"),
+    let offerForm = document.getElementById("offerForm"),
         offerInputPhone = document.getElementById("offerInputPhone"),
-        offerInputMail = document.getElementById("offerInputMail"),
-        offerInputs = [offerInputName, offerInputPhone, offerInputMail];
+        offerInputMail = document.getElementById("offerInputMail");
 
-    function CustomValidation() {}
-
-    CustomValidation.prototype = {
-        // Установим пустой массив сообщений об ошибках
-        invalidities: [],
-
-        // Метод, проверяющий валидность
-        checkValidity: function (input) {
-
-            let validity = input.validity;
-
-            if (validity.patternMismatch) {
-                this.addInvalidity('Неправильный формат ввода!');
-            }
-
-            if (validity.rangeUnderflow) {
-                var min = getAttributeValue(input, 'min');
-                this.addInvalidity('Минимальная длина поля должна соответствовать' + min + ' символов');
-            }
-        },
-
-        // Добавляем сообщение об ошибке в массив ошибок
-        addInvalidity: function (message) {
-            this.invalidities.push(message);
-        },
-
-        // Получаем общий текст сообщений об ошибках
-        getInvalidities: function () {
-            return this.invalidities.join('. \n');
+    // Checking validity
+    offerForm.onsubmit = function () {
+        if (!checkFormValidity(offerInputPhone, offerInputMail)) {
+            return false;
+        } else {
+            sendOrder();
+            return true;
         }
-    };
-
-    // Добавляем обработчик клика на кнопку отправки формы
-    sendBtn.addEventListener('click', function (e) {
-        // Пройдёмся по всем полям
-        for (let i = 0; i < offerInputs.length; i++) {
-            let offerInput = offerInputs[i];
-
-            // Проверим валидность поля, используя встроенную в JavaScript функцию checkValidity()
-            if (offerInput.checkValidity() == false) {
-                let inputCustomValidation = new CustomValidation(); // Создадим объект CustomValidation
-                inputCustomValidation.checkValidity(offerInput); // Выявим ошибки
-                let customValidityMessage = inputCustomValidation.getInvalidities(); // Получим все сообщения об ошибках
-                offerInput.setCustomValidity(customValidityMessage); // Установим специальное сообщение об ошибке
-            } else {
-                sendOrder()
-            }
-        };
-        alert('1');
-    });
-
-
-    function sendOrder() {
-        alert("Заказ отправлен, мы скоро с вами свяжемся!");
-        ClearAllElems()
     };
 
     changeCartIconNumber();
@@ -237,6 +188,7 @@ export default function cartMainFunction() {
             }
 
             document.getElementById("totalCartSum").innerHTML = `${totalCartSum} руб.`;
+            document.getElementById("hiddenCartItem").value = cartInfo + `Общая стоимость товаров: ${totalSum}руб.`;
         }
 
         return totalCartSum;
@@ -250,13 +202,15 @@ export default function cartMainFunction() {
                 `<div class="cart-cards__empty">
                     <p class="cart-cards__empty-text">Корзина пуста...</p>
                 </div>`;
+                
             // Закрытие окна
             setTimeout(() => {
-                closePopup(document.querySelector('#popup-cart'), true)
+                closePopup(document.querySelector('#popup-cart'), true);
             }, 1000)
         };
 
-        let totalCartSum = openCart();
+        let cartData = getCartData(),
+            totalCartSum = openCart();
 
         if (totalCartSum === 0) {
             document.getElementById("totalCartSum").innerHTML = `0 руб.`;
@@ -339,6 +293,40 @@ export default function cartMainFunction() {
             setTimeout(() => {
                 closePopup(document.querySelector('#popup-cart'), true)
             }, 1000);
+        }
+    };
+
+    function sendOrder() {
+        alert("Заказ отправлен, мы скоро с вами свяжемся!");
+        // Закрытие окна
+        setTimeout(() => {
+            closePopup(document.querySelector('#popup-offer'), true);
+        }, 1000);
+        clearAllItems();
+    };
+
+    function checkFormValidity(phone, mail) {
+        let phoneVal = phone.value,
+            mailVal = mail.value;
+
+        if (phoneVal.length < 11 || !validatePhone(phoneVal)) {
+            alert('Неправильный формат ввода телефона!');
+            return false;
+        } else if (!validateEmail(mailVal)) {
+            alert('Неправильный формат ввода электронного адреса!');
+            return false;
+        } else {
+            return true;
+        }
+
+        function validatePhone(phone) {
+            let reg = /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
+            return reg.test(String(phone));
+        }
+
+        function validateEmail(email) {
+            let reg = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i;
+            return reg.test(String(email));
         }
     };
 
