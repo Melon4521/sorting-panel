@@ -1,12 +1,13 @@
-import myJson from '../api/demoDataTires.json' assert {
+import myJson from '../api/demoDataTiresFull.json' assert {
     type: 'json'
 };
 
-import selectGenerate from './sorting-panel/selects/select-generate/script.js';
-import createAndSettingCards from "./cards/script.js";
-import sortingEvents from './sorting-panel/sorting/script.js';
-import reset from './sorting-panel/selects/reset.js';
-import cartMainFunction from './shopping-cart/script.js';
+import selectGenerate from '../pages/catalog/sorting-panel/selects/select-generate/script.js';
+import settingCards from "../pages/catalog/cards/script.js";
+import sortingEvents from '../pages/catalog/sorting-panel/sorting/script.js';
+import reset from '../pages/catalog/sorting-panel/selects/reset.js';
+import cartInit from './shopping-cart.js';
+import pagenInit from '../pages/catalog/pagination/script.js';
 
 //<Sorting>==============================================================================
 
@@ -28,12 +29,13 @@ easydropdown.all();
 
 //<Cards>==============================================================================
 
-createAndSettingCards(myJson);
+pagenInit(myJson);
+settingCards();
 
 //</Cards>==============================================================================
 
 //<Shopping cart>==============================================================================
 
-cartMainFunction()
+cartInit()
 
 //</Shopping cart>==============================================================================

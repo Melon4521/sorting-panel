@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная</title>
+    <title>Акции</title>
 
-    <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/iconsfont.css">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/sales.css">
 </head>
 
 <body>
@@ -27,6 +26,7 @@
                             <h4 class="header-logo__subtitle">шины и диски</h4>
                         </div>
                     </div>
+
                 </a>
                 <div class="top-header__menu top-menu">
                     <a class="top-menu__tel icon-phone popup-opener" data-popup_open="#popup-contacts" href="#">Контакты</a>
@@ -42,8 +42,8 @@
                     <nav class="header-footer__menu menu-nav">
                         <ul class="menu-nav__list">
 
-                            <li class="menu-nav__elem _active-link">
-                                <a class="menu-nav__link" href="#">Главная</a>
+                            <li class="menu-nav__elem">
+                                <a class="menu-nav__link" href="index.html">Главная</a>
                             </li>
 
                             <li class="menu-nav__elem">
@@ -54,8 +54,8 @@
                                 <a class="menu-nav__link" href="services.html">Сервис</a>
                             </li>
 
-                            <li class="menu-nav__elem">
-                                <a class="menu-nav__link" href="sales.html">Акции</a>
+                            <li class="menu-nav__elem _active-link">
+                                <a class="menu-nav__link" href="#">Акции</a>
                             </li>
 
                             <li class="menu-nav__elem">
@@ -65,82 +65,19 @@
                         </ul>
                     </nav>
                 </div>
-            </div>
         </header>
 
+        <!-- MAIN -->
         <main class="main">
+
             <div class="container">
-                <div class="catalog" style="padding-top: 50px;">
-                    <div class="catalog__sort" id="Left">
-                        <div class="catalog__sort-menu sort-menu">
-                            <h3 class="sort-menu__title">Шины</h3>
-                            <button class="sort-menu__back" id="ButtonBack">Назад</button>
-                            <button class="sort-menu__find sort-menu__button" id="LeftPick">Подобрать</button>
-                            <button class="sort-menu__reset sort-menu__button" id="Reset">Сбросить</button>
-                            <div class="sort-menu__body">
-                                <div id="selectGroup" class="sort-menu__selects LeftBodyDiv">
-                                    <div class="SelectBox" data-name="brand">
-                                        <select class="dropdown">
-                                            <option value="0">Производитель</option>
-                                        </select>
-                                    </div>
-                                    <div class="SelectBox" data-name="ship">
-                                        <select class="dropdown">
-                                            <option value="0">Шиповка</option>
-                                        </select>
-                                    </div>
-                                    <div class="SelectBox" data-name="date_up">
-                                        <select class="dropdown">
-                                            <option value="0">Дата производства</option>
-                                        </select>
-                                    </div>
-                                    <div class="SelectBox" data-name="season">
-                                        <select class="dropdown">
-                                            <option value="0">Сезон</option>
-                                        </select>
-                                    </div>
-                                    <div class="SelectBox" data-name="w">
-                                        <select class="dropdown">
-                                            <option value="0">Ширина</option>
-                                        </select>
-                                    </div>
-                                    <div class="SelectBox" data-name="h">
-                                        <select class="dropdown">
-                                            <option value="0">Высота</option>
-                                        </select>
-                                    </div>
-                                    <div class="SelectBox" data-name="r">
-                                        <select class="dropdown">
-                                            <option value="0">Диаметр</option>
-                                        </select>
-                                    </div>
-                                </div>
+                <div style="height: 50vh;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;">
 
-                                <div class="sort-menu__price menu-price">
-                                    <h3 class="menu-price__title">Розничная цена</h3>
-                                    <div class="menu-price__header">
-                                        <div class="menu-price__min menu-price__elem">
-                                            От <span id="MinPriceCard" value="false">123</span>
-                                        </div>
-                                        <div class="menu-price__max menu-price__elem">
-                                            До <span id="MaxPriceCard" value="false">123</span>
-                                        </div>
-                                    </div>
-                                    <div class="menu-price__range">
-                                        <input id="MenuPriceRange" type="range" multiple value="" min="" max="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        
+                    <p style="font-size: 20px; color: rgb(67, 67, 67);">Данная страница временно не доступна</p>
                 </div>
-        
-                <div class="my-slider__pagination swiper-pagination"></div>
-                
-                <div class="my-slider__prev swiper-button-prev"></div>
-                <div class="my-slider__next swiper-button-next"></div>
-
             </div>
 
         </main>
@@ -179,15 +116,15 @@
                             <h3 class="footer-col__title">Навигация</h3>
                             <ul class="footer-col__list">
                                 <li class="footer-col__list-item">
+                                    <a class="footer-col__link" href="index.html">Главная</a>
+                                </li>
+
+                                <li class="footer-col__list-item">
                                     <a class="footer-col__link" href="catalog.html">Каталог</a>
                                 </li>
 
                                 <li class="footer-col__list-item">
                                     <a class="footer-col__link" href="services.html">Сервисы</a>
-                                </li>
-
-                                <li class="footer-col__list-item">
-                                    <a class="footer-col__link" href="sales.html">Акции</a>
                                 </li>
 
                                 <li class="footer-col__list-item">
@@ -213,6 +150,7 @@
         </footer>
 
         <!-- POPUPS -->
+
         <!-- Header 'Contacts' -->
         <section class="popup" id="popup-contacts">
             <div class="popup__body">
@@ -293,11 +231,11 @@
                 <div class="elipse-up__elem icon-arrow-up"></div>
             </div>
         </div>
+
     </div>
-    
-    <script src="js/swiper-bundle.min.js"></script>
-    <script type="module" src="js/home.js"></script>
+
     <script src="js/header.js"></script>
+    <script type="module" src="js/sales.js"></script>
 
 </body>
 

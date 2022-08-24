@@ -118,7 +118,7 @@ function unlockBody() {
 
 //</Popup>==============================================================================
 
-//<Padding to main element>==============================================================================
+//<Padding to main element and header fixing>==============================================================================
 
 const headerElement = document.querySelector('.header'),
     mainElement = document.querySelector('.main');
@@ -132,6 +132,20 @@ document.addEventListener('scroll', () => {
     if (cheakScrollPosition(500)) {
         headerElement.classList.add('_header-fixed');
         addPadding();
+    } 
+    
+    if (cheakScrollPosition(600)) {
+        let elipseUp = document.querySelector('#elipseUp');
+        elipseUp.classList.add('_active');
+        elipseUp.addEventListener('click', () => {
+            scrollToPosition(0)
+        });
+    } else {
+        let elipseUp = document.querySelector('#elipseUp');
+        elipseUp.classList.remove('_active');
+        elipseUp.removeEventListener('click', () => {
+            scrollToPosition(0)
+        })
     }
 });
 
@@ -147,7 +161,7 @@ burgerButton.addEventListener('click', openMenuBurger);
 function openMenuBurger() {
 
     if (!navigationMenu.classList.contains('_burger-open') &&
-    !burgerButton.classList.contains('_burger-open')) {
+        !burgerButton.classList.contains('_burger-open')) {
         burgerButton.classList.add('_burger-open');
         navigationMenu.classList.add('_burger-open');
         let scrollWidth = window.innerWidth - document.documentElement.clientWidth;
@@ -159,7 +173,7 @@ function openMenuBurger() {
         document.body.classList.remove('_lock');
         document.body.style.paddingRight = `0px`;
     }
-    
+
 }
 
 //</Burger menu>==============================================================================
@@ -173,15 +187,22 @@ function openMenuBurger() {
 function cheakMaxWidth(pixels) {
     let mediaQuery = window.matchMedia(`(max-width: ${pixels}px)`);
     return mediaQuery.matches
-}
+};
 
 function cheakMinWidth(pixels) {
     let mediaQuery = window.matchMedia(`(min-width: ${pixels}px)`);
     return mediaQuery.matches
-}
+};
 
 function cheakScrollPosition(coord) {
     return (window.pageYOffset >= coord) ? true : false;
-}
+};
+
+function scrollToPosition(top, behavior = "smooth") {
+    window.scrollTo({
+        top: top,
+        behavior: behavior,
+    });
+};
 
 // </FUNCTIONS> ==============================================================================

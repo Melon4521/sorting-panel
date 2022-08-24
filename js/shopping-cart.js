@@ -1,4 +1,4 @@
-export default function cartMainFunction() {
+export default function cartInit() {
     let addToCartButtons = document.querySelectorAll('.addToCart'),
         cartData = getCartData();
     const shoppingCart = document.querySelector('#shoppingCart'),
@@ -188,7 +188,7 @@ export default function cartMainFunction() {
             }
 
             document.getElementById("totalCartSum").innerHTML = `${totalCartSum} руб.`;
-            document.getElementById("hiddenCartItem").value = cartInfo + `Общая стоимость товаров: ${totalSum}руб.`;
+            document.getElementById("hiddenCartItem").value = cartInfo + `Общая стоимость товаров: ${totalCartSum}руб.`;
         }
 
         return totalCartSum;
@@ -198,10 +198,11 @@ export default function cartMainFunction() {
         if (confirm("Вы точно хотите очистить всё?")) {
             localStorage.removeItem("shopping-cart");
             shoppingCart.innerHTML = '';
-            shoppingCart.innerHTML = /*html*/
-                `<div class="cart-cards__empty">
-                    <p class="cart-cards__empty-text">Корзина пуста...</p>
-                </div>`;
+            shoppingCart.innerHTML = /*html*/ `
+            <div class="cart-cards__empty">
+                <p class="cart-cards__empty-text">Корзина пуста...</p>
+            </div>
+            `;
                 
             // Закрытие окна
             setTimeout(() => {
@@ -276,10 +277,11 @@ export default function cartMainFunction() {
             localStorage.removeItem("shopping-cart");
             changeCartIconNumber();
             shoppingCart.innerHTML = '';
-            shoppingCart.innerHTML = /*html*/
-                `<div class="cart-cards__empty">
+            shoppingCart.innerHTML = /*html*/ `
+            <div class="cart-cards__empty">
                 <p class="cart-cards__empty-text">Корзина пуста...</p>
-            </div>`;
+            </div>
+            `;
 
             if (cartMakeOffer.classList.contains('_has-cart-data')) {
                 cartMakeOffer.classList.remove('_has-cart-data');
