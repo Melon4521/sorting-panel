@@ -96,4 +96,6 @@ export default function pagenInit(myJson, arrAll, e) {
             </div>
         `;
     };
+
+    scrollToPosition(0);
 };
