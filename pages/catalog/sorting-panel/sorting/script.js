@@ -37,11 +37,10 @@ export default function sortingEvents(myJson, page,arrAll) {
 
     let lastPage = Math.ceil(arrAll.length / 10) ;
     document.getElementById('pagenPage').children[1].innerHTML = `${lastPage}`;
+    document.getElementById('pagenPage').children[0].innerHTML = '1';
 
-    console.log(page , lastPage);
-
-    // console.log('Номера удалившихся :', arrSuperfluous); // Номера карточек которые удалятся
-    // console.log('Номера оставшихся :',arrAll); // Остатки , номера которые будут выводится
+    console.log('Номера удалившихся :', arrSuperfluous); // Номера карточек которые удалятся
+    console.log('Номера оставшихся :',arrAll); // Остатки , номера которые будут выводится
 
     // console.log('Количество карточек:', Right.children.length,` из ${count} возможных`); // Количество карточек
     return arrAll = arrAll;
