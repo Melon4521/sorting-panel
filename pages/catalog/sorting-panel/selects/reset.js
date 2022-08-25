@@ -9,13 +9,12 @@ export default function reset(myJson, arrAll) {
     arrAll = [];
 
     for (let i = 0; i < myJson.tires.length; i++) { // Генерация всех индексов товаров
-        arrAll.push(i)
+        arrAll.push(i);
     };
 
     for (let i = 0; i < select.children.length; i++) { // Добавление в массив не подходящих по значению
         if (select.children[i].children[0].children[0].children[2].value != 0){
             select.children[i].children[0].children[0].children[2].value = 0;
-            console.log('resets');
         };
     };
 
