@@ -6,7 +6,7 @@ export default function pagenInit(myJson, arrAll, e) {
             document.getElementById('pagenPage').children[0].innerHTML = `${thisPage - 1}`;
         } else if (e.target.classList.contains('catalog-pagen__next')) {
             document.getElementById('pagenPage').children[0].innerHTML = `${thisPage + 1}`;
-        }
+        };
     };
 
     if (Number(document.getElementById('pagenPage').children[0].textContent) == 1) {

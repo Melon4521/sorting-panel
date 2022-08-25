@@ -43,7 +43,11 @@ document.getElementById('LeftPick').addEventListener('click', () => {
 });
 
 document.getElementById('pagen').addEventListener('click', (e) => {
-    pagenInit(myJson, arrAll,e);
+    if (e.target.classList.contains('catalog-pagen__prev')) {
+        pagenInit(myJson, arrAll, e);
+    } else if (e.target.classList.contains('catalog-pagen__next')) {
+        pagenInit(myJson, arrAll, e);
+    };
 });
 //<Shopping cart>==============================================================================
 
