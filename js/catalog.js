@@ -34,7 +34,8 @@ arrAll = sortingEvents(myJson, page, arrAll);
 pagenInit(myJson, arrAll);
 
 document.getElementById('Reset').addEventListener('click', () => {
-    reset()
+    arrAll = reset(myJson , arrAll)
+    pagenInit(myJson, arrAll);
 });
 
 document.getElementById('LeftPick').addEventListener('click', () => {
