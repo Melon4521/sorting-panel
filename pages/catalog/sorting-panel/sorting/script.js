@@ -1,39 +1,48 @@
-export default function sortingEvents() {
+export default function sortingEvents(myJson, page,arrAll) {
 
-    let allItem = document.getElementById('Right'),
-        maxPrice = document.getElementById('MaxPriceCard').textContent,
-        select = document.getElementById('selectGroup');
+    console.clear();
+    let arrSuperfluous = []; // Массив лишних индексо
+    arrAll = []
 
-    let arrAll = [];
+    for (let i = 0; i < myJson.tires.length; i++) { // Генерация всех индексов товаров
+        arrAll.push(i)
+    };
 
-    for (let i = 0; i < select.children.length; i++) {
-        let type = select.children[i].children[0].children[0].children[2].value,
-            qualification = 'data-' + select.children[i].dataset.name;
+    let selectAll = document.getElementById('selectGroup'), // Группа селектов
+        maxPrice = +(document.getElementById('MaxPriceCard').attributes.value.value),
+        inputRangeValue = document.getElementById('MaxPriceCard').textContent;
 
-        if ((Number(document.getElementById('MaxPriceCard').attributes.value.value) != Number(maxPrice)) || (type != 0)) {
-            for (let x = 0; x < allItem.children.length; x++) {
-                if (type != 0) {
-                    if (allItem.children[x].getAttribute(qualification) != type) {
-                        arrAll.push(x);
-                    };
-                };
-                if (Number(document.getElementById('MaxPriceCard').attributes.value.value) != Number(maxPrice)){
-                    if (Number(allItem.children[x].attributes[3].value) > Number(maxPrice)) {
-                        arrAll.push(x);
-                    };
+    for (let i = 0; i < selectAll.children.length; i++) { // Добавление в массив не подходящих по значению
+        let type = selectAll.children[i].dataset.name, // Тип , дата-name (brand , w , h , r ...) 
+            qualification = selectAll.children[i].children[0].children[0].children[2].value; // Получение value текущего select'a 
+
+        if (qualification != 0) {
+            for (let z = 0; z < myJson.tires.length; z++) {
+                if (myJson.tires[z][`${type}`] != qualification) {
+                    arrSuperfluous.push(z)
                 };
             };
         };
     };
 
-    arrAll = Array.from(new Set(arrAll)) // Удаление лишнего (повторов)
-    arrAll.sort((a, b) => a - b); // Сортировка по возрастанию
-
-    for (let i = 0; i < allItem.children.length; i++) {
-        allItem.children[i].style.display = 'block';
+    if (+(inputRangeValue) != +(maxPrice)) {
+        for (let z = 0; z < myJson.tires.length; z++) {
+            if (+(myJson.tires[z].price) >= +(inputRangeValue)) {
+                arrSuperfluous.push(z);
+            };
+        };
     };
 
-    for (let i = 0; i < arrAll.length; i++) {
-        allItem.children[arrAll[i]].style.display = 'none';
-    };
+    arrAll = arrAll.filter(e => !~arrSuperfluous.indexOf(e)); // Удаление ненужного
+
+    let lastPage = Math.ceil(arrAll.length / 10) ;
+    document.getElementById('pagenPage').children[1].innerHTML = `${lastPage}`;
+
+    console.log(page , lastPage);
+
+    // console.log('Номера удалившихся :', arrSuperfluous); // Номера карточек которые удалятся
+    // console.log('Номера оставшихся :',arrAll); // Остатки , номера которые будут выводится
+
+    // console.log('Количество карточек:', Right.children.length,` из ${count} возможных`); // Количество карточек
+    return arrAll = arrAll;
 };

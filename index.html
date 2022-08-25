@@ -68,66 +68,66 @@
             </div>
         </header>
 
+        <!-- MAIN -->
         <main class="main">
-            <div class="container">
-                <div class="catalog" style="padding-top: 50px;">
-                    <div class="catalog__sort" id="Left">
-                        <div class="catalog__sort-menu sort-menu">
-                            <h3 class="sort-menu__title">Шины</h3>
-                            <button class="sort-menu__back" id="ButtonBack">Назад</button>
-                            <button class="sort-menu__find sort-menu__button" id="LeftPick">Подобрать</button>
-                            <button class="sort-menu__reset sort-menu__button" id="Reset">Сбросить</button>
-                            <div class="sort-menu__body">
-                                <div id="selectGroup" class="sort-menu__selects LeftBodyDiv">
-                                    <div class="SelectBox" data-name="brand">
-                                        <select class="dropdown">
-                                            <option value="0">Производитель</option>
-                                        </select>
+
+            <!-- Slider -->
+            <div class="my-slider swiper">
+
+                <div class="my-slider__wrapper swiper-wrapper">
+        
+                    <div class="my-slider__slide swiper-slide">
+                        <div class="my-slider__image my-slider__image-1">
+                            <div class="slide-1__decor">
+                                <img class="slide-1__decor-1" src="images/Slide-1_Decor-left.png" alt="">
+                                <img class="slide-1__decor-2" src="images/Slide-1_Decor-right.png" alt="">
+                            </div>
+                            <div class="container">
+                                <div class="slide__wrapper slide__wrapper-1">
+                                    <div class="slide__image slide__image-1">
+                                        <img src="images/Slide-1_Tire.png" alt="">
                                     </div>
-                                    <div class="SelectBox" data-name="ship">
-                                        <select class="dropdown">
-                                            <option value="0">Шиповка</option>
-                                        </select>
-                                    </div>
-                                    <div class="SelectBox" data-name="date_up">
-                                        <select class="dropdown">
-                                            <option value="0">Дата производства</option>
-                                        </select>
-                                    </div>
-                                    <div class="SelectBox" data-name="season">
-                                        <select class="dropdown">
-                                            <option value="0">Сезон</option>
-                                        </select>
-                                    </div>
-                                    <div class="SelectBox" data-name="w">
-                                        <select class="dropdown">
-                                            <option value="0">Ширина</option>
-                                        </select>
-                                    </div>
-                                    <div class="SelectBox" data-name="h">
-                                        <select class="dropdown">
-                                            <option value="0">Высота</option>
-                                        </select>
-                                    </div>
-                                    <div class="SelectBox" data-name="r">
-                                        <select class="dropdown">
-                                            <option value="0">Диаметр</option>
-                                        </select>
+                                    <div class="slide__content slide__content-1">
+                                        <div class="slide__content-title">Лучшие шины</div>
+                                        <div class="slide__content-subtitle">от известных производителей.</div>
                                     </div>
                                 </div>
-
-                                <div class="sort-menu__price menu-price">
-                                    <h3 class="menu-price__title">Розничная цена</h3>
-                                    <div class="menu-price__header">
-                                        <div class="menu-price__min menu-price__elem">
-                                            От <span id="MinPriceCard" value="false">123</span>
-                                        </div>
-                                        <div class="menu-price__max menu-price__elem">
-                                            До <span id="MaxPriceCard" value="false">123</span>
-                                        </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="my-slider__slide swiper-slide">
+                        <div class="my-slider__image my-slider__image-2">
+                            <div class="slide__image-2">
+                                <div class="slide__image-2__wrapper">
+                                    <img style="z-index: 1;" class="slide__image-2__img-1" src="images/Slide-2_Decor.png" alt="">
+                                    <img style="z-index: 2;" class="slide__image-2__img-2" src="images/Slide-2_Disk.png" alt="">
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="slide__wrapper slide__wrapper-2">
+                                    <div class="slide__content slide__content-2">
+                                        <div class="slide__content-title">Надежные диски</div>
+                                        <div class="slide__content-subtitle">для вашего автомобиля.</div>
                                     </div>
-                                    <div class="menu-price__range">
-                                        <input id="MenuPriceRange" type="range" multiple value="" min="" max="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="my-slider__slide swiper-slide">
+                        <div class="my-slider__image  my-slider__image-3">
+                            <div class="slide-3__decor">
+                                <img src="images/Slide-3_Decor.png" alt="">
+                            </div>
+                            <div class="container">
+                                <div class="slide__wrapper slide__wrapper-3">
+                                    <div class="slide__image slide__image-3">
+                                        <img src="images/Slide-3_Keys.png" alt="">
+                                    </div>
+                                    <div class="slide__content slide__content-3">
+                                        <div class="slide__content-title">Шиномонтаж</div>
+                                        <div class="slide__content-subtitle">предоставляем при покупки комплекта шин и дисков.</div>
                                     </div>
                                 </div>
                             </div>

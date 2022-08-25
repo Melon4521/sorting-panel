@@ -128,7 +128,8 @@
                                         </div>
                                     </div>
                                     <div style="margin-top: 20px ;">
-                                        <button class="sort-menu__find sort-menu__button" id="LeftPick">Подобрать</button>
+                                        <button class="sort-menu__find sort-menu__button"
+                                            id="LeftPick">Подобрать</button>
                                         <button class="sort-menu__reset sort-menu__button" id="Reset">Сбросить</button>
                                     </div>
                                 </div>
@@ -138,19 +139,19 @@
                         <div class="catalog__cards" id="Right"></div>
                     </div>
                     <!-- Pagen -->
-                    <div class="catalog__pagen catalog-pagen">
+                    <div class="catalog__pagen catalog-pagen" id="pagen">
                         <div class="catalog-pagen__prev" id="pagenPrev">
-                            <div class="catalog-pagen__text icon-arrow"></div>
+                            <div class="catalog-pagen__text icon-arrow" style="pointer-events:none;"></div>
                         </div>
-                        <div class="catalog-pagen__buttons">
+                        <div class="catalog-pagen__buttons pagen-buttons">
 
-                            <div class="catalog-pagen__button">
-                                <div class="catalog-pagen__button-text" id="numberPage">1</div>
-                            </div>
+                            <input class="pagen-buttons__input" id="pagenInput" min="1" max="9" type="tel" value=""
+                                placeholder="Страница...">
+                            <div class="pagen-buttons__page" id="pagenPage"><span>1</span>/<span>...</span></div>
 
                         </div>
                         <div class="catalog-pagen__next" id="pagenNext">
-                            <div class="catalog-pagen__text icon-arrow"></div>
+                            <div class="catalog-pagen__text icon-arrow" style="pointer-events:none;"></div>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ export default function reset() {
     let input = document.getElementById('MenuPriceRange');
     let select = document.getElementById('selectGroup');
 
+
     document.getElementById('MaxPriceCard').innerHTML = `${maxPrice.textContent}`;
     input.value = input.max;
 

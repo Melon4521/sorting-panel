@@ -1,147 +1,99 @@
-import settingCards from '../cards/script.js';
+export default function pagenInit(myJson, arrAll, e) {
+    let thisPage = Number(document.getElementById('pagenPage').children[0].textContent);
 
-export default function pagenInit(myJson) {
-    const step = 10,
-        pagenPrev = document.querySelector('#pagenPrev'),
-        pagenNext = document.querySelector('#pagenNext');
-    let start = 0,
-        end = step;
-    let pass = 0; // количество пропускаемых карточек
+    if (e) {
+        if (e.target.classList.contains('catalog-pagen__prev')) {
+            document.getElementById('pagenPage').children[0].innerHTML = `${thisPage - 1}`;
+        } else if (e.target.classList.contains('catalog-pagen__next')) {
+            document.getElementById('pagenPage').children[0].innerHTML = `${thisPage + 1}`;
+        }
+    };
 
-    pagenPrev.addEventListener('click', pagenPrevCards);
-    pagenNext.addEventListener('click', pagenNextCards);
+    if (Number(document.getElementById('pagenPage').children[0].textContent) == 1) {
+        document.getElementById('pagenPrev').style.pointerEvents = 'none';
+    } else if (Number(document.getElementById('pagenPage').children[0].textContent) == Number(document.getElementById('pagenPage').children[1].textContent)) {
+        document.getElementById('pagenNext').style.pointerEvents = 'none';
+    } else {
+        document.getElementById('pagenPrev').style.pointerEvents = 'all';
+        document.getElementById('pagenNext').style.pointerEvents = 'all';
+    };
 
-    newCardGenerate(myJson, start, end);
+    const count = 10; // Число карточек на странице
+    let Right = document.getElementById('Right'); // Место вывода карточек
 
-    //<Functions>==============================================================================
+    Right.innerHTML = ``; // Очищение от старых карточек
 
-    function newCardGenerate(myJson, start, end) {
-        let PlaceGeneration = document.getElementById('Right');
+    let page = +(document.getElementById('pagenPage').children[0].textContent); // Узнаём номер страницы
 
-        PlaceGeneration.innerHTML = '';
+    for (let i = (page - 1) * count; i < page * count; i++) { // От и до какой карточки выводим
 
-        let page = end / step;
-        document.getElementById('numberPage').innerHTML = `${page}`;
-
-        if (Number(page) == 1) {
-            pagenPrev.classList.add('catalog-pagen__prev__disable');
-        } else {
-            pagenPrev.classList.remove('catalog-pagen__prev__disable');
+        if ((Right.children.length == count) || (i > arrAll.length - 1)) { // Условия при которых больше не выводим карточки
+            break;
         };
 
-        for (let i = start + pass; i < end + pass; i++) {
+        // console.log(`Номер карточки в правом блоке '${i}' - номер карточки по факту в json '${arrAll[i]}'`); // Номер карточки : номер по массиву
 
-            let image;
+        let image;
 
-            if (i > myJson.tires.length - 1) {
-                break;
-            };
+        if (myJson.tires[`${arrAll[i]}`].image500x500) { // Выдача картинки если её нет
+            image = myJson.tires[`${arrAll[i]}`].image500x500;
+        } else {
+            image = "images/no-image.png";
+        };
 
-            if (myJson.tires[i].image500x500) {
-                image = myJson.tires[i].image500x500;
-            } else {
-                image = "images/no-image.png";
-            };
-
-            PlaceGeneration.innerHTML += /*html*/ `
-                <div class="catalog__cards-card catalog-card" id="Card" name="${myJson.tires[i].name}" price="${myJson.tires[i].price}" stok="${myJson.tires[i].stock}" data-brand='${myJson.tires[i].brand}' data-ship='${myJson.tires[i].ship}' data-date_up='${myJson.tires[i].date_up}' data-season='${myJson.tires[i].season}' data-w='${myJson.tires[i].w}' data-h='${myJson.tires[i].h}' data-r='${myJson.tires[i].r}'>
-                    <div class="catalog-card__media-title"></div>
-                    <div class="catalog-card__body">
-                        <div class="catalog-card__image">
-                            <img src="${image}">
+        Right.innerHTML += /*html*/ `
+            <div class="catalog__cards-card catalog-card" name="${myJson.tires[`${arrAll[i]}`].name}" price="${myJson.tires[`${arrAll[i]}`].price}" stok="${myJson.tires[`${arrAll[i]}`].stock}" data-brand='${myJson.tires[`${arrAll[i]}`].brand}' data-ship='${myJson.tires[`${arrAll[i]}`].ship}' data-date_up='${myJson.tires[`${arrAll[i]}`].date_up}' data-season='${myJson.tires[`${arrAll[i]}`].season}' data-w='${myJson.tires[`${arrAll[i]}`].w}' data-h='${myJson.tires[`${arrAll[i]}`].h}' data-r='${myJson.tires[`${arrAll[i]}`].r}'>
+                <div class="catalog-card__media-title"></div>
+                <div class="catalog-card__body">
+                    <div class="catalog-card__image">
+                        <img src="${image}">
+                    </div>
+                    <div class="catalog-card__info card-info">
+                        <div class="card-info__title"><a href="#">${myJson.tires[`${arrAll[i]}`].name}</a></div>
+                        <div class="card-info__price">
+                            <span>${+(myJson.tires[`${arrAll[i]}`].price)}</span> руб./шт.
                         </div>
-                        <div class="catalog-card__info card-info">
-                            <div class="card-info__title"><a href="#">${myJson.tires[i].name}</a></div>
-                            <div class="card-info__price">
-                                <span>${Number(myJson.tires[i].price)}</span> руб./шт.
+                        <div class='catalog-card__dop card-dop CardDopInfo'>
+                            <div class="card-dop__item">
+                                Сезон:
+                                <span>${myJson.tires[i].season}</span>
                             </div>
-                            <div class='catalog-card__dop card-dop CardDopInfo'>
-                                <div class="card-dop__item">
-                                    Сезон:
-                                    <span>${myJson.tires[i].season}</span>
-                                </div>
-                                <div class="card-dop__item">
-                                    В наличии:
-                                    <span>${Number(myJson.tires[i].stock)}</span>
-                                    шт.
-                                </div>
-                                <div class="card-dop__item">
-                                    Производитель:
-                                    <span>${myJson.tires[i].brand}</span>
-                                </div>
+                            <div class="card-dop__item">
+                                В наличии:
+                                <span>${+(myJson.tires[`${arrAll[i]}`].stock)}</span>
+                                шт.
                             </div>
-                            <div class="card-info__buttons CardButtonAll">
-                                <button class="card-info__button buyIn1Click" 
-                                    data-name="${myJson.tires[i].name}" 
-                                    data-price="${myJson.tires[i].price}" 
-                                    data-stock="${myJson.tires[i].stock}"
-                                    data-date_up="${myJson.tires[i].date_up}" 
-                                    data-season="${myJson.tires[i].season}"
-                                    data-image="${myJson.tires[i].image500x500}"
-                                    data-card_id="${myJson.tires[i].code}">
-                                    Купить в 1 клик
-                                </button>
-                                <button class="card-info__button addToCart" 
-                                    data-name="${myJson.tires[i].name}" 
-                                    data-price="${myJson.tires[i].price}" 
-                                    data-stock="${myJson.tires[i].stock}"
-                                    data-date_up="${myJson.tires[i].date_up}" 
-                                    data-season="${myJson.tires[i].season}"
-                                    data-image="${myJson.tires[i].image500x500}"
-                                    data-card_id="${myJson.tires[i].code}">
-                                    В корзину
-                                </button>
+                            <div class="card-dop__item">
+                                Производитель:
+                                <span>${myJson.tires[`${arrAll[i]}`].brand}</span>
                             </div>
+                        </div>
+                        <div class="card-info__buttons CardButtonAll">
+                            <button class="card-info__button buyIn1Click" 
+                                data-name="${myJson.tires[`${arrAll[i]}`].name}" 
+                                data-price="${myJson.tires[`${arrAll[i]}`].price}" 
+                                data-stock="${myJson.tires[`${arrAll[i]}`].stock}"
+                                data-date_up="${myJson.tires[`${arrAll[i]}`].date_up}" 
+                                data-season="${myJson.tires[`${arrAll[i]}`].season}"
+                                data-image="${myJson.tires[`${arrAll[i]}`].image500x500}"
+                                data-card_id="${myJson.tires[`${arrAll[i]}`].code}">
+                                Купить в 1 клик
+                            </button>
+                            <button class="card-info__button addToCart" 
+                                data-name="${myJson.tires[`${arrAll[i]}`].name}" 
+                                data-price="${myJson.tires[`${arrAll[i]}`].price}" 
+                                data-stock="${myJson.tires[`${arrAll[i]}`].stock}"
+                                data-date_up="${myJson.tires[`${arrAll[i]}`].date_up}" 
+                                data-season="${myJson.tires[`${arrAll[i]}`].season}"
+                                data-image="${myJson.tires[`${arrAll[i]}`].image500x500}"
+                                data-card_id="${myJson.tires[`${arrAll[i]}`].code}">
+                                В корзину
+                            </button>
                         </div>
                     </div>
-                    <div class="catalog-card__media-buttons"></div>
                 </div>
-            `;
-        };
-
-        if (PlaceGeneration.children.length != step){
-            pagenNext.classList.add('catalog-pagen__prev__disable');
-        } else {
-            if (pagenPrev.classList.contains('catalog-pagen__prev__disable')) {
-                pagenPrev.classList.remove('catalog-pagen__prev__disable');
-            };
-        };
+                <div class="catalog-card__media-buttons"></div>
+            </div>
+        `;
     };
-
-    function pagenPrevCards() {
-        let startPosition;
-        let endPosition;
-
-        if (start == 0) {
-
-        } else {
-            end = start;
-            start -= step;
-            startPosition = start;
-            endPosition = end;
-            newCardGenerate(myJson, startPosition, endPosition);
-            settingCards();
-            scrollToPosition(0);
-        };
-    };
-
-    function pagenNextCards() {
-        let startPosition;
-        let endPosition;
-
-        if (end >= myJson.tires.length) {
-
-        } else {
-            start = end;
-            end += step;
-            startPosition = start;
-            endPosition = end;
-
-            newCardGenerate(myJson, startPosition, endPosition);
-            settingCards()
-            scrollToPosition(0);
-        };
-    };
-
-    //</Functions>==============================================================================
 };
