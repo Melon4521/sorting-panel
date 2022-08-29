@@ -10,6 +10,22 @@ async function json() {
 
 let myJson = await json();
 
+console.log(myJson);
+
+// async function test() {
+//     let test = await myJson ;
+//     console.log(test);
+// }
+
+// test();
+// test();
+// test();
+// test();
+// test();
+// test();
+// test();
+
+
 import selectGenerate from '../pages/catalog/sorting-panel/selects/select-generate/script.js';
 import settingCards from "../pages/catalog/cards/script.js";
 import sortingEvents from '../pages/catalog/sorting-panel/sorting/script.js';
